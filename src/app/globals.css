@@ -18,38 +18,3 @@ body,
 ::-webkit-scrollbar {
   width: 0px;
 }
-
-.custom-pagination-container {
-  position: absolute;
-  right: 63px;
-  top: 50%;
-  z-index: 100;
-  transform: translateY(-50%);
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.custom-pagination {
-  width: 67px;
-  height: 67px;
-  border: 1px solid white;
-  border-radius: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 30px;
-  font-weight: 800;
-  line-height: 14px;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.custom-pagination::before {
-  position: absolute;
-  content: "";
-  width: 70%;
-  height: 1px;
-  background-color: white;
-}

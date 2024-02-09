@@ -27,32 +27,37 @@ const Intro = ({ swiperInstance }) => {
         </div>
         <div className="flex flex-col lg:flex-row lg:gap-8 lg:justify-between lg:items-baseline">
           <div className="mb-8">
-            <Image
-              src="/logo.svg"
-              width={100}
-              height={100}
-              alt="Agency Africa Logo"
-              className="w-full mb-4"
-            />
+            <div>
+              <h1 className="sr-only">
+                Bienvenue sur Agency.Africa, l'offre de création publicitaire et
+                contenus de marque de l'agence digitale Void.
+              </h1>
+              <Image
+                src="/logo.svg"
+                width={100}
+                height={100}
+                alt="Agency Africa Logo"
+                className="w-full mb-4"
+              />
+            </div>
             <div className="font-light uppercase text-[26px] leading-[normal] lg:text-[40px] lg:leading-[47px]">
-              <h2>Films institutionnels</h2>
-              <h2>campagnes publicitaires</h2>
-              <h2>Rapports d'activité d'entreprises</h2>
-              <h2>Dispositifs événementiels</h2>
-              <h2>reportages et interviews </h2>
-              <h2>Capsules motion design</h2>
-              <h2>Prises de vues drone</h2>
-              <h2>Animations 3D</h2>
+              <h3>Films institutionnels</h3>
+              <h3>campagnes publicitaires</h3>
+              <h3>Rapports d'activité d'entreprises</h3>
+              <h3>Dispositifs événementiels</h3>
+              <h3>reportages et interviews </h3>
+              <h3>Capsules motion design</h3>
+              <h3>Prises de vues drone</h3>
+              <h3>Animations 3D</h3>
             </div>
           </div>
           <div className="font-sofia font-normal leading-6 lg:max-w-[424px]">
             <p className="mb-4">
-              Bienvenue sur Agency.Africa, l'offre
-              <span className="font-[1000]"> publicitaire</span> et
-              <span className="font-[1000]"> contenu de marque</span> de
-              l'agence digitale&nbsp;
+              Bienvenue sur Agency.Africa, l'offre de
+              <b>&nbsp;création publicitaire</b> et
+              <b>&nbsp;contenus de marque</b> de l'agence digitale&nbsp;
               <Link
-                href="https://www.void.fr"
+                href="https://void.fr/fr"
                 target="_blank"
                 className="underline"
               >
@@ -62,11 +67,11 @@ const Intro = ({ swiperInstance }) => {
             </p>
             <p className="mb-4">
               Nous concevons et réalisons des films, campagnes et dispositifs de
-              communication pour des entreprises panafricaines et européennes
-              dans tous les secteurs d'activité.
+              communication événementielle pour des entreprises panafricaines et
+              européennes dans tous les secteurs d'activité.
             </p>
             <p className="mb-4">
-              Natif du digital, nous avons l'agilité d'un studio de création,
+              Natif du digital, nous avons l'agilité d'une agence conseil,
               augmenté par un réseau pluridisciplinaire de production
               audiovisuelle.
             </p>

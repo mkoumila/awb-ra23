@@ -19,6 +19,9 @@ import SwiperItemDesktop from "./components/SwiperItemDesktop";
 import { useBreakPoint } from "./hooks/useBreakPoint";
 
 const VerticalSlider = ({ data = sliderData }) => {
+  // get the current device ( changes of viewport resizing )
+  const device = useBreakPoint();
+
   // Swiper Instance
   const [swiperInstance, setSwiperInstance] = useState(null);
 
@@ -51,13 +54,15 @@ const VerticalSlider = ({ data = sliderData }) => {
   };
   // Function to update pagination and reset overlays on slide change
   const updatePagination = (swiper) => {
-    const currentIndex = swiper.realIndex - 1;
+    const currentIndex = swiper?.realIndex - 1;
     const totalSlides = swiper?.slides?.length - 1 || data.length;
 
     // Conditionally setting the pagination text
     if (currentIndex >= 0) {
       setPaginationText(
-        `<span>${currentIndex + 1}</span><span>${totalSlides}</span>`
+        `<span>${currentIndex + 1}</span>${
+          device !== "desktop" ? "/" : ""
+        }<span>${totalSlides}</span>`
       );
     } else {
       setPaginationText(""); // Hide pagination for the first slide
@@ -66,9 +71,6 @@ const VerticalSlider = ({ data = sliderData }) => {
     // Reset the overlay visibility
     setOverlayVisibility(data.map(() => true));
   };
-
-  // get the current device ( changes of viewport resizing )
-  const device = useBreakPoint();
 
   return (
     <>
@@ -107,13 +109,14 @@ const VerticalSlider = ({ data = sliderData }) => {
                     title={item.title}
                     content={item.content}
                     image={item.image}
+                    alt={item.alt}
                     video={item.video}
                     isAward={item.isAward}
                     isStrategiesGrandPrix={item.isStrategiesGrandPrix}
                     index={index}
                     playVideo={playVideo}
                     videoRefs={videoRefs}
-                    isVisible={overlayVisibility[index]} // Pass visibility state
+                    isVisible={overlayVisibility} // Pass visibility state
                     swiperInstance={swiperInstance}
                     resetOverlayVisibility={() =>
                       setOverlayVisibility(data.map(() => true))
@@ -125,17 +128,19 @@ const VerticalSlider = ({ data = sliderData }) => {
                     title={item.title}
                     content={item.content}
                     image={item.image}
+                    alt={item.alt}
                     video={item.video}
                     isAward={item.isAward}
                     isStrategiesGrandPrix={item.isStrategiesGrandPrix}
                     index={index}
                     playVideo={playVideo}
                     videoRefs={videoRefs}
-                    isVisible={overlayVisibility[index]} // Pass visibility state
+                    isVisible={overlayVisibility} // Pass visibility state
                     swiperInstance={swiperInstance}
                     resetOverlayVisibility={() =>
                       setOverlayVisibility(data.map(() => true))
                     }
+                    paginationText={paginationText}
                   />
                 )}
               </SwiperSlide>
@@ -143,12 +148,14 @@ const VerticalSlider = ({ data = sliderData }) => {
           })}
         </Swiper>
         {/* Pagiation */}
-        {paginationText && !overlayVisibility.some((el) => el === false) && (
-          <SwiperPagination
-            swiperInstance={swiperInstance}
-            paginationText={paginationText}
-          />
-        )}
+        {paginationText &&
+          !overlayVisibility.some((el) => el === false) &&
+          device === "desktop" && (
+            <SwiperPagination
+              swiperInstance={swiperInstance}
+              paginationText={paginationText}
+            />
+          )}
       </div>
     </>
   );

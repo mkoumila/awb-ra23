@@ -8,6 +8,7 @@ const SwiperItemDesktop = ({
   title,
   content,
   image,
+  alt,
   video,
   isAward,
   isStrategiesGrandPrix,
@@ -19,7 +20,7 @@ const SwiperItemDesktop = ({
   resetOverlayVisibility,
 }) => {
   // Control the visibility of the overlay using the isVisible prop
-  const overlayStyle = { display: isVisible ? "block" : "none" };
+  const overlayStyle = { display: isVisible[index] ? "block" : "none" };
 
   // State to handle showing video component
   const [showVideo, setShowVideo] = useState(false);
@@ -56,7 +57,7 @@ const SwiperItemDesktop = ({
         <Image
           className="absolute top-0 left-0 w-full h-full object-cover brightness-75"
           src={`https://res.cloudinary.com/${cloudinaryName}/image/upload/f_webp,q_auto/v1/${image}`}
-          alt={image}
+          alt={alt}
           fill
         />
         <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">

@@ -4,6 +4,7 @@ export const sliderData = [
     title: "Biogaran",
     content: "Spot publicitaire de marque pour la CAN 2024",
     image: "agency_africa/thumbnails/biogaran_can24",
+    alt: "Biogaran - Spot publicitaire de marque pour la CAN 2024",
     video: "agency_africa/videos/biogaran_can24_void",
     id: "biogaran",
     isAward: false,
@@ -13,6 +14,7 @@ export const sliderData = [
     title: "Axa Maroc",
     content: "Campagne publicitaire pour le numéro court 2992",
     image: "agency_africa/thumbnails/axa_2992",
+    alt: "AXA Maroc - Campagne publicitaire pour le numéro court 2992",
     video: "agency_africa/videos/axa_ar",
     id: "axa-maroc",
     isAward: false,
@@ -22,6 +24,7 @@ export const sliderData = [
     title: "#ClapClapTour21",
     content: "La campagne d'employee advocacy du Groupe ELSAN",
     image: "agency_africa/thumbnails/clapclap_tour21_elsan",
+    alt: "ELSAN - La campagne d'employee advocacy",
     video: "agency_africa/videos/case_elsan_clapclaptour21_long",
     id: "clapclap-tour-21",
     isAward: true,
@@ -31,6 +34,7 @@ export const sliderData = [
     title: "Pernod Ricard",
     content: "Le premier rapport annuel 100% vidéo",
     image: "agency_africa/thumbnails/pernod_ricard_rapport_annuel",
+    alt: "Pernod Ricard - Le premier rapport annuel 100% vidéo",
     video: "agency_africa/videos/pernod_ricard_video_digital",
     id: "pernod-ricard",
     isAward: false,
@@ -41,6 +45,7 @@ export const sliderData = [
     content:
       "Vidéo de prospective sur l'intelligence artificielle dans le Groupe",
     image: "agency_africa/thumbnails/accor_ai",
+    alt: "Accor - Vidéo de prospective sur l'intelligence artificielle dans le Groupe",
     video: "agency_africa/videos/wip_en_3mn",
     id: "accor",
     isAward: false,
@@ -51,6 +56,7 @@ export const sliderData = [
     content:
       "Vidéo en motion design pour les célébrer l'anniversaire du Groupe",
     image: "agency_africa/thumbnails/elsan_20_ans",
+    alt: "ELSAN - Vidéo en motion design pour les célébrer l'anniversaire du Groupe",
     video: "agency_africa/videos/film20ans_edit09_60is",
     id: "elsan-20-ans",
     isAward: false,
@@ -60,6 +66,7 @@ export const sliderData = [
     title: "Africa Bright",
     content: "Film institutionnel d'un groupe bancaire panafricain indépendant",
     image: "agency_africa/thumbnails/africa_bright_film",
+    alt: "Africa Bright - Film institutionnel d'un groupe bancaire panafricain indépendant",
     video: "agency_africa/videos/film_instit_africa_bright",
     id: "africa-bright",
     isAward: false,
@@ -70,6 +77,7 @@ export const sliderData = [
     content:
       "Campagne publicitaire mondiale de lancement du smartphone OneTouch",
     image: "agency_africa/thumbnails/alcatel_one_touch",
+    alt: "Alacatel - Campagne publicitaire mondiale de lancement du smartphone OneTouch",
     video: "agency_africa/videos/alcatel_idol4_30",
     id: "alcatel",
     isAward: false,
@@ -80,6 +88,7 @@ export const sliderData = [
     content:
       "Vidéo de présentation portail d'Attijariwafa bank Corporate & Investment Banking",
     image: "agency_africa/thumbnails/awb_cib",
+    alt: "Attijariwafa bank - Vidéo de présentation portail d'Attijariwafa bank Corporate & Investment Banking",
     video: "agency_africa/videos/montage_cib_f3",
     id: "attijari-cib",
     isAward: false,
@@ -89,6 +98,7 @@ export const sliderData = [
     title: "#ShowYourFreshFace",
     content: "Campagne de marque pan Européenne pour le Groupe Mondelez",
     image: "agency_africa/thumbnails/show_your_fresh_face_mondelez",
+    alt: "Groupe Mondelez - Campagne pan Européenne pour les marques de chewing-gum du Groupe",
     video: "agency_africa/videos/mondelez_1",
     id: "show-your-fresh-face",
     isAward: false,
@@ -99,6 +109,7 @@ export const sliderData = [
     content:
       "Vidéo institutionnelle pour la banque de financement et d'investissement Marocaine",
     image: "agency_africa/thumbnails/cdg_capital",
+    alt: "CDG Capital - Vidéo institutionnelle pour la banque de financement et d'investissement Marocaine",
     video: "agency_africa/videos/cdg_capital_lavenir_avec_passion",
     id: "cdgc-apital",
     isAward: false,
@@ -108,6 +119,7 @@ export const sliderData = [
     title: "#EtreEssentiels",
     content: "Film de la marque ELSAN à l'occasion des vœux 2021",
     image: "agency_africa/thumbnails/etre_essentiel_elsan",
+    alt: "ELSAN - Film RSE à l'occasion des vœux 2021",
     video: "agency_africa/videos/elsan_etre_essentiel_f",
     id: "etre-essentiels",
     isAward: false,
@@ -118,6 +130,7 @@ export const sliderData = [
     content:
       "Interviews et production de vidéo en motion design pour les résultats financiers du groupe bancaire",
     image: "agency_africa/thumbnails/attijariwafa_bank_investor_relation",
+    alt: "Attijariwafa bank - Interviews et production vidéo en motion design pour les résultats financiers du groupe",
     video: "agency_africa/videos/awb_ismail_douiri",
     id: "attijariwafa-bank",
     isAward: false,
@@ -127,6 +140,7 @@ export const sliderData = [
     title: "Saham Group",
     content: "Campagne de marque pour le leader de l'assurance au Maroc",
     image: "agency_africa/thumbnails/saham_essentiel",
+    alt: "Saham Group - Campagne de marque pour le leader de l'assurance au Maroc",
     video: "agency_africa/videos/integrated_cristal_saham",
     id: "saham-group",
     isAward: false,
@@ -136,6 +150,7 @@ export const sliderData = [
     title: "Restez chez vous !",
     content: "Spots publicitaires pour la marque de cloud gaming Blacknut",
     image: "agency_africa/thumbnails/blacknut_spot",
+    alt: "Blacknut - Spots publicitaires pour la marque de cloud gaming",
     video: "agency_africa/videos/video_v1_web_teletravail",
     id: "restez-chez-vous",
     isAward: false,
@@ -145,6 +160,7 @@ export const sliderData = [
     title: "boom!!!",
     content: "Teasing vidéo de l'offre de Coliving de KleyGroup",
     image: "agency_africa/thumbnails/coliving_kley_group",
+    alt: "KleyGroup - Teasing vidéo de l'offre de Coliving",
     video: "agency_africa/videos/kley_boom",
     id: "boom",
     isAward: false,
@@ -155,6 +171,7 @@ export const sliderData = [
     content:
       "Vidéo en motion design pour la Caisse de Dépôt et de Gestion du Maroc",
     image: "agency_africa/thumbnails/groupe_cdg_film",
+    alt: "Groupe CDG - Vidéo en motion design pour la Caisse de Dépôt et de Gestion du Maroc",
     video: "agency_africa/videos/film_cdg_fr",
     id: "groupe-cdg",
     isAward: false,
@@ -165,6 +182,7 @@ export const sliderData = [
     content:
       "Vidéos en motion design pour le Centre Monétique Interbancaire Marocain",
     image: "agency_africa/thumbnails/cmi_motion",
+    alt: "CMI - Vidéos en motion design pour le Centre Monétique Interbancaire Marocain",
     video: "agency_africa/videos/cmi_video_institutionnel",
     id: "cmi",
     isAward: false,
@@ -175,6 +193,7 @@ export const sliderData = [
     content:
       "Vidéo institutionnelle pour célébrer les 20 ans du leader de l'assurance au Maroc",
     image: "agency_africa/thumbnails/saham_20_ans",
+    alt: "Saham Group - Vidéo institutionnelle pour célébrer les 20 ans du leader de l'assurance au Maroc",
     video: "agency_africa/videos/saham_hd_en_broadcast_141015",
     id: "saham-group-20-ans",
     isAward: false,
@@ -185,6 +204,7 @@ export const sliderData = [
     content:
       "Campagne publicitaire mondiale pour le lancement de la première montre connectée d'Alcatel",
     image: "agency_africa/thumbnails/alcatel_go_watch",
+    alt: "Alcatel - Campagne publicitaire mondiale pour le lancement de la première montre connectée",
     video: "agency_africa/videos/alcatel_go_watch_manifesto",
     id: "alcatel-go-watch",
     isAward: false,
@@ -195,6 +215,7 @@ export const sliderData = [
     content:
       "Interviews et prises de vues drone pour l'aménageur Val de Seine Aménagement",
     image: "agency_africa/thumbnails/itw_en_perspective_pont_dayde_0806",
+    alt: "Val de Seine Aménagement - Interviews et prises de vues drone pour l'aménageur",
     video: "agency_africa/videos/itw_en_perspective_pont_dayde_0806",
     id: "ile-seguin-rives-de-seine",
     isAward: false,
@@ -205,6 +226,7 @@ export const sliderData = [
     content:
       "Jingle de révélation du Musical de Broadway au théâtre Mogador à Paris",
     image: "agency_africa/thumbnails/la_belle_et_la_bete_mogador",
+    alt: "La Belle et la Bête - Jingle de révélation du Musical de Broadway au théâtre Mogador à Paris",
     video: "agency_africa/videos/teaser_la_belle_et_la_bete",
     id: "la-belle-et-la-bete",
     isAward: false,
@@ -215,6 +237,7 @@ export const sliderData = [
     content:
       "Motion design pour dévoiler le nouveau nom et logo du premier groupe de santé privé en France",
     image: "agency_africa/thumbnails/elsan_revelation",
+    alt: "ELSAN - Motion design pour dévoiler le nouveau nom et logo du premier groupe de santé privé en France",
     video: "agency_africa/videos/reveal_logo",
     id: "elsan",
     isAward: false,
@@ -225,6 +248,7 @@ export const sliderData = [
     content:
       "Vidéo en motion design et 3D pour présenter le prochain centre de santé de Marseille",
     image: "agency_africa/thumbnails/doc_city_marseille",
+    alt: "DocCity - Vidéo en motion design et 3D pour présenter le prochain centre de santé de Marseille",
     video: "agency_africa/videos/film_dc_marseillev15_new_voice",
     id: "doc-city",
     isAward: false,
@@ -235,6 +259,7 @@ export const sliderData = [
     content:
       "Rapport d'activité du leader des solutions de mobilité parisiennes",
     image: "agency_africa/thumbnails/saemes_ra2022",
+    alt: "SAEMES - Rapport d'activité du leader des solutions de mobilité parisiennes",
     video: "agency_africa/videos/saemes_final_4k_02",
     id: "saemes",
     isAward: false,
@@ -245,6 +270,7 @@ export const sliderData = [
     content:
       "Vidéo motion design de présentation de la start-up parisienne de self storage",
     image: "agency_africa/thumbnails/lockall_motion",
+    alt: "Lockall - Vidéo motion design de présentation de la start-up parisienne de self storage",
     video: "agency_africa/videos/lockall_video_services09",
     id: "lockall",
     isAward: false,

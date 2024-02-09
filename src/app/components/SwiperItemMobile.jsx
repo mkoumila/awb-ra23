@@ -2,12 +2,14 @@ import { CloudinaryContext, Transformation, Video } from "cloudinary-react";
 import Image from "next/image";
 import { Animate } from "./Animate";
 import { useEffect, useState } from "react";
+import SwiperPagination from "./SwiperPagination";
 
 const SwiperItemMobile = ({
   cloudinaryName,
   title,
   content,
   image,
+  alt,
   video,
   isAward,
   isStrategiesGrandPrix,
@@ -17,9 +19,10 @@ const SwiperItemMobile = ({
   isVisible,
   swiperInstance,
   resetOverlayVisibility,
+  paginationText,
 }) => {
   // Control the visibility of the overlay using the isVisible prop
-  const overlayStyle = { display: !isVisible ? "flex" : "none" };
+  const overlayStyle = { display: !isVisible[index] ? "flex" : "none" };
 
   // State to handle showing video component
   const [showVideo, setShowVideo] = useState(false);
@@ -52,11 +55,11 @@ const SwiperItemMobile = ({
         <Image
           className="absolute top-0 left-0 w-full h-full object-cover"
           src={`https://res.cloudinary.com/${cloudinaryName}/image/upload/f_webp,q_auto/v1/${image}`}
-          alt={image}
+          alt={alt}
           fill
         />
       </div>
-      <div className="flex-1 flex flex-col items-center justify-center gap-3">
+      <div className="flex-1 flex flex-col items-center justify-center gap-3 relative">
         <Animate
           animationType="fade"
           direction="down"
@@ -115,6 +118,30 @@ const SwiperItemMobile = ({
               alt="strategies grand prix"
             />
           </Animate>
+        )}
+        {/* Show Next Slide Arrow only if it's not the last slide */}
+        {!(
+          swiperInstance?.realIndex ===
+          swiperInstance?.slides?.length - 1
+        ) && (
+          <div
+            className="absolute bottom-4 left-1/2 -translate-x-1/2 brightness-0"
+            onClick={() => swiperInstance?.slideNext()}
+          >
+            <Image
+              src="/arrow-down.svg"
+              width={20}
+              height={20}
+              alt="Go to next slide"
+            />
+          </div>
+        )}
+        {/* Pagination */}
+        {paginationText && !isVisible.some((el) => el === false) && (
+          <SwiperPagination
+            swiperInstance={swiperInstance}
+            paginationText={paginationText}
+          />
         )}
       </div>
       {showVideo && (
@@ -213,14 +240,7 @@ const Controls = ({
             className="w-full h-full flex items-center justify-center a2a_dd"
             onClick={handleShareClick}
           >
-            <Image
-              src="/share.svg"
-              width={14}
-              height={14}
-              alt="Slide Up"
-
-              /* onClick={() => copyToClipboard()} */
-            />
+            <Image src="/share.svg" width={14} height={14} alt="Slide Up" />
           </div>
         </div>
       </div>
