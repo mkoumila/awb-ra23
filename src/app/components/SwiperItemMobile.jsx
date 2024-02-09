@@ -22,6 +22,9 @@ const SwiperItemMobile = ({
   // Control the visibility of the overlay using the isVisible prop
   const overlayStyle = { display: !isVisible ? "flex" : "none" };
 
+  // State to handle showing video component
+  const [showVideo, setShowVideo] = useState(false);
+
   useEffect(() => {
     const videoElement = videoRefs.current[index]?.current;
     if (videoElement) {
@@ -75,7 +78,12 @@ const SwiperItemMobile = ({
         </Animate>
         <div
           className="flex h-[67px] w-[67px] cursor-pointer items-center justify-center rounded-full bg-bloody text-white font-extrabold leading-[47px] text-xl absolute right-4 bottom-4 uppercase shadow-lg"
-          onClick={() => playVideo(index)}
+          onClick={() => {
+            // To show the video component ( for better performance )
+            setShowVideo(true);
+            // Play the video
+            playVideo(index);
+          }}
         >
           PLAY
         </div>
@@ -110,30 +118,32 @@ const SwiperItemMobile = ({
           </Animate>
         )}
       </div>
-      <div
-        className="absolute top-0 left-0 w-full h-full bg-black flex items-center justify-center"
-        style={overlayStyle}
-      >
-        <CloudinaryContext cloudName={cloudinaryName} className="relative">
-          <Video
-            publicId={video}
-            className=""
-            innerRef={videoRefs.current[index]} // Link the ref to the video element
-            poster=""
-            secure="true"
-            preload="metadata"
-            onClick={togglePlayPause}
-          >
-            <Transformation fetchFormat="auto" quality="auto" />
-          </Video>
-        </CloudinaryContext>
-        <Controls
-          swiperInstance={swiperInstance}
-          resetOverlayVisibility={resetOverlayVisibility}
-          videoRefs={videoRefs}
-          index={index}
-        />
-      </div>
+      {showVideo && (
+        <div
+          className="absolute top-0 left-0 w-full h-full bg-black flex items-center justify-center"
+          style={overlayStyle}
+        >
+          <CloudinaryContext cloudName={cloudinaryName} className="relative">
+            <Video
+              publicId={video}
+              className=""
+              innerRef={videoRefs.current[index]} // Link the ref to the video element
+              poster=""
+              secure="true"
+              preload="metadata"
+              onClick={togglePlayPause}
+            >
+              <Transformation fetchFormat="auto" quality="auto" />
+            </Video>
+          </CloudinaryContext>
+          <Controls
+            swiperInstance={swiperInstance}
+            resetOverlayVisibility={resetOverlayVisibility}
+            videoRefs={videoRefs}
+            index={index}
+          />
+        </div>
+      )}
     </div>
   );
 };
