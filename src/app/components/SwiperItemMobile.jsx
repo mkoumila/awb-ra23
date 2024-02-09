@@ -93,7 +93,7 @@ const SwiperItemMobile = ({
           <Animate
             animationType="fade"
             direction="left"
-            className="absolute left-0 top-[43%] -translate-y-1/2 shadow-lg"
+            className="absolute left-0 -top-20 -translate-y-1/2 shadow-lg"
           >
             <Image
               src="/awards_clapclaptours.png"
@@ -108,7 +108,7 @@ const SwiperItemMobile = ({
           <Animate
             animationType="fade"
             direction="left"
-            className="absolute left-0 top-[43%] -translate-y-1/2 shadow-lg"
+            className="absolute left-0 -top-[108px] -translate-y-1/2 shadow-lg"
           >
             <Image
               src="/strategies_grand_prix.png"

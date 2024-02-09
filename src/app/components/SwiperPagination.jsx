@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const SwiperPagination = ({ swiperInstance, paginationText }) => {
   return (
-    <div className="flex absolute lg:right-[63px] top-12 lg:top-1/2 z-10 -translate-y-1/2 flex-col items-center lg:gap-[10px]">
+    <div className="flex absolute lg:right-[63px] top-[15%] lg:top-1/2 z-10 -translate-y-1/2 flex-col items-center lg:gap-[10px]">
       <Image
         src="/arrow-up.svg"
         width={20}
