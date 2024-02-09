@@ -62,10 +62,9 @@ const SwiperItemMobile = ({
       <div className="flex-1 flex flex-col items-center justify-center gap-3 relative">
         <Animate
           animationType="fade"
-          direction="down"
-          cascade
-          duration={600}
+          duration={1000}
           triggerOnce={false}
+          className="mx-2"
         >
           {title && (
             <h2 className="text-4xl font-extrabold text-center uppercase">
