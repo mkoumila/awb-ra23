@@ -1,7 +1,6 @@
 import { CloudinaryContext, Transformation, Video } from "cloudinary-react";
 import Image from "next/image";
 import { Animate } from "./Animate";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const SwiperItemMobile = ({
@@ -131,6 +130,8 @@ const SwiperItemMobile = ({
               poster=""
               secure="true"
               preload="metadata"
+              playsInline // This prop ensures inline playback on iOS.
+              webkit-playsinline="true" // This ensures inline playback on older webkit browsers.
               onClick={togglePlayPause}
             >
               <Transformation fetchFormat="auto" quality="auto" />
@@ -166,6 +167,27 @@ const Controls = ({
     }
   };
 
+  const handleShareClick = () => {
+    const currentUrl = window.location.href; // Includes the hash
+
+    // Check if the Web Share API is available
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "Share This Page",
+          url: currentUrl,
+        })
+        .catch((error) => console.log("Error sharing:", error));
+    } else {
+      // Fallback to opening the share URL in a new tab/popup
+      const shareUrl = `https://www.addtoany.com/share?url=${encodeURIComponent(
+        currentUrl
+      )}`;
+      const popupFeatures = `width=300,height=300,resizable=yes,scrollbars=yes,status=yes`;
+      window.open(shareUrl, "Share", popupFeatures);
+    }
+  };
+
   return (
     <div className="absolute bottom-4 right-4 flex flex-col items-center gap-[10px]">
       <div
@@ -187,9 +209,9 @@ const Controls = ({
       </div>
       <div className="h-9 w-9 border border-white rounded-full flex items-center justify-center transition-all bg-black bg-opacity-10 cursor-pointer">
         <div className="w-full h-full a2a_kit a2a_kit_size_32 a2a_default_style">
-          <Link
+          <div
             className="w-full h-full flex items-center justify-center a2a_dd"
-            href="https://www.addtoany.com/share"
+            onClick={handleShareClick}
           >
             <Image
               src="/share.svg"
@@ -199,7 +221,7 @@ const Controls = ({
 
               /* onClick={() => copyToClipboard()} */
             />
-          </Link>
+          </div>
         </div>
       </div>
       <div

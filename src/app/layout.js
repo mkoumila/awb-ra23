@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <body>{children}</body>
-      <Script src="https://static.addtoany.com/menu/page.js" />
+      <Script async src="https://static.addtoany.com/menu/page.js" />
     </html>
   );
 }

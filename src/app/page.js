@@ -90,9 +90,8 @@ const VerticalSlider = ({ data = sliderData }) => {
               ? "bg-black"
               : "bg-silver"
           }`}
-          id="slider"
         >
-          <SwiperSlide>
+          <SwiperSlide data-hash="intro">
             <Intro swiperInstance={swiperInstance} />
           </SwiperSlide>
           {data.map((item, index) => {

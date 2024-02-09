@@ -1,7 +1,6 @@
 import { CloudinaryContext, Transformation, Video } from "cloudinary-react";
 import Image from "next/image";
 import { Animate } from "./Animate";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const SwiperItemDesktop = ({
@@ -199,6 +198,22 @@ const Controls = ({
     };
   }, []);
 
+  const handleShareClick = () => {
+    const currentUrl = `${window.location.href}`; // This includes the hash
+    const shareUrl = `https://www.addtoany.com/share?url=${encodeURIComponent(
+      currentUrl
+    )}`;
+    // Specify dimensions and features of the popup window
+    const popupWidth = 600;
+    const popupHeight = 400;
+    const left = window.screen.width / 2 - popupWidth / 2;
+    const top = window.screen.height / 2 - popupHeight / 2;
+    const popupFeatures = `width=${popupWidth},height=${popupHeight},left=${left},top=${top},resizable=yes,scrollbars=yes,status=yes`;
+
+    // Open the AddToAny share page in a popup window
+    window.open(shareUrl, "Share", popupFeatures);
+  };
+
   return (
     <div
       className={`absolute bottom-10 left-[calc(50%+28px)] -translate-x-1/2 flex items-center gap-x-5 transition-all duration-500 ${
@@ -207,9 +222,9 @@ const Controls = ({
     >
       <div className="h-9 w-9 border border-white rounded-full flex items-center justify-center group transition-all bg-black bg-opacity-10 hover:bg-white cursor-pointer">
         <div className="w-full h-full a2a_kit a2a_kit_size_32 a2a_default_style">
-          <Link
+          <div
             className="w-full h-full flex items-center justify-center a2a_dd"
-            href="https://www.addtoany.com/share"
+            onClick={handleShareClick}
           >
             <Image
               src="/share.svg"
@@ -218,7 +233,7 @@ const Controls = ({
               alt="Slide Up"
               className="group-hover:brightness-0"
             />
-          </Link>
+          </div>
         </div>
       </div>
       <div
