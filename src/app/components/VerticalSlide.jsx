@@ -9,16 +9,19 @@ import "swiper/css/keyboard";
 import "swiper/css/hash-navigation";
 
 // import required modules
-import { Pagination, Keyboard, HashNavigation } from "swiper/modules";
-import { createRef, useRef, useState } from "react";
+import { Pagination, Keyboard } from "swiper/modules";
+import { createRef, useEffect, useRef, useState } from "react";
 import { cloudinaryName } from "../data";
 import Intro from "./Intro";
 import SwiperPagination from "./SwiperPagination";
 import SwiperItemMobile from "./SwiperItemMobile";
 import SwiperItemDesktop from "./SwiperItemDesktop";
 import { useBreakPoint } from "../hooks/useBreakPoint";
+import { useRouter } from "next/navigation";
 
-export const VerticalSlider = ({ data }) => {
+export const VerticalSlider = ({ data, slug }) => {
+  const router = useRouter();
+
   // get the current device ( changes of viewport resizing )
   const device = useBreakPoint();
 
@@ -70,7 +73,22 @@ export const VerticalSlider = ({ data }) => {
 
     // Reset the overlay visibility
     setOverlayVisibility(data.map(() => true));
+
+    // Update url with the correct slide's id
+    if (
+      typeof window !== "undefined" &&
+      data[swiper?.realIndex - 1]?.id !== undefined
+    ) {
+      const newPath = `/${data[swiper?.realIndex - 1]?.id}`;
+      const newUrl = window.location.origin + newPath;
+      window.history.pushState(null, "", newUrl);
+    }
   };
+
+  // Go to specific slide depends on slug value
+  useEffect(() => {
+    slug && swiperInstance?.slideTo(data.findIndex((el) => el.id === slug) + 1);
+  }, [swiperInstance]);
 
   return (
     <>
@@ -79,8 +97,7 @@ export const VerticalSlider = ({ data }) => {
           cssMode
           speed={500}
           direction="vertical"
-          hashNavigation={true}
-          modules={[Pagination, Keyboard, HashNavigation]}
+          modules={[Pagination, Keyboard]}
           onInit={(swiper) => {
             setSwiperInstance(swiper);
             updatePagination(swiper);
