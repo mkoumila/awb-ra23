@@ -18,7 +18,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   // Your Google Tag Manager container ID
-  const GTM_ID = "GTM-agencyafrica";
+  const GTM_ID = "GTM-PS9S9SS3";
 
   return (
     <html lang="fr">
