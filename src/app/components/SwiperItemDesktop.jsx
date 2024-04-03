@@ -2,12 +2,16 @@ import { CloudinaryContext, Transformation, Video } from "cloudinary-react";
 import Image from "next/image";
 import { Animate } from "./Animate";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const SwiperItemDesktop = ({
   cloudinaryName,
   title,
   content,
+  delay,
   image,
+  thumbnail,
+  thumbnail_alt,
   alt,
   video,
   isAward,
@@ -17,6 +21,7 @@ const SwiperItemDesktop = ({
   videoRefs,
   isVisible,
   swiperInstance,
+  file,
   resetOverlayVisibility,
 }) => {
   // Control the visibility of the overlay using the isVisible prop
@@ -56,7 +61,7 @@ const SwiperItemDesktop = ({
       >
         <Image
           className="absolute top-0 left-0 w-full h-full object-cover brightness-75"
-          src={`https://res.cloudinary.com/${cloudinaryName}/image/upload/f_webp,q_auto/v1/${image}`}
+          src={`https://res.cloudinary.com/${cloudinaryName}/image/upload/f_webp,q_auto/v1/${thumbnail}`}
           alt={alt}
           fill
         />
@@ -73,19 +78,19 @@ const SwiperItemDesktop = ({
               triggerOnce={false}
             >
               {title && (
-                <h2 className="w-fit text-[100px] font-extrabold text-center uppercase relative before:absolute before:content-[''] before:bg-white before:h-1 before:left-0 before:bottom-8 before:transition-all before:duration-500 before:w-0 group-hover:before:w-full ">
+                <h2 className="text-[100px] font-extrabold leading-none text-center">
                   {title}
                 </h2>
               )}
               {content && (
-                <p className="text-[30px] font-bold leading-[30px] text-center mb-8">
+                <p className="text-3xl font-bold leading-[30px] tracking-[0.02em] text-center whitespace-pre-wrap max-w-[1000px]">
                   {content}
                 </p>
               )}
             </Animate>
           </div>
           <div
-            className="flex h-[67px] w-[67px] cursor-pointer items-center justify-center rounded-full bg-bloody text-white font-extrabold leading-[47px] text-xl absolute left-1/2 -translate-x-1/2 bottom-10 uppercase"
+            className="cursor-pointer absolute left-1/2 -translate-x-1/2 bottom-10"
             onClick={() => {
               // To show the video component ( for better performance )
               setShowVideo(true);
@@ -93,7 +98,13 @@ const SwiperItemDesktop = ({
               playVideo(index);
             }}
           >
-            PLAY
+            <Image
+              src="/play.svg"
+              width={84}
+              height={84}
+              alt="play video"
+              className=""
+            />
           </div>
         </div>
         {isAward && (
@@ -124,6 +135,20 @@ const SwiperItemDesktop = ({
             />
           </Animate>
         )}
+
+        {/** file */}
+        <Link
+          href="/"
+          className="absolute bottom-6 left-6 inline-flex items-center gap-4 text-base font-bold leading-[30px] tracking-[0.02em] text-center text-white hover:underline"
+        >
+          <Image
+            src="/download-file.svg"
+            width={34}
+            height={43}
+            className="relative top-1"
+          />
+          <span>Télécherger le .pdf</span>
+        </Link>
       </div>
 
       {/* Video component */}

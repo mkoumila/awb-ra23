@@ -111,7 +111,7 @@ export const VerticalSlider = ({ data, slug }) => {
           }`}
         >
           <SwiperSlide data-hash="intro">
-            <Intro swiperInstance={swiperInstance} />
+            <Intro swiperInstance={swiperInstance} data={data} cloudinaryName={cloudinaryName} />
           </SwiperSlide>
           {data.map((item, index) => {
             return (
@@ -122,10 +122,13 @@ export const VerticalSlider = ({ data, slug }) => {
               >
                 {device === "desktop" ? (
                   <SwiperItemDesktop
+                    {...item}
                     cloudinaryName={cloudinaryName}
                     title={item.title}
                     content={item.content}
+                    delay={item?.delay}
                     image={item.image}
+                    thumbnail={item?.thumbnail}
                     alt={item.alt}
                     video={item.video}
                     isAward={item.isAward}
