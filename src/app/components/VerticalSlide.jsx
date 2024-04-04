@@ -42,6 +42,8 @@ export const VerticalSlider = ({ data, slug }) => {
   // Pagination state to handle the pagination visibility
   const [paginationText, setPaginationText] = useState("");
 
+  const [currentIndexSwiper, setCurrentIndexSwiper] = useState(0)
+
   // Create an array of refs to store references to the video DOM elements
   const videoRefs = useRef(data.map(() => createRef()));
 
@@ -71,6 +73,7 @@ export const VerticalSlider = ({ data, slug }) => {
     const currentIndex = swiper?.realIndex - 1;
     const totalSlides = swiper?.slides?.length - 1 || data.length;
 
+    setCurrentIndexSwiper(currentIndex)
     // Conditionally setting the pagination text
     if (currentIndex >= 0) {
       setPaginationText(
@@ -129,6 +132,7 @@ export const VerticalSlider = ({ data, slug }) => {
               data={data}
               cloudinaryName={cloudinaryName}
               openMenuOverlay={openMenuOverlay}
+              currentIndexSwiper={currentIndexSwiper}
             />
           </SwiperSlide>
           {data.map((item, index) => {

@@ -1,4 +1,10 @@
 export const cloudinaryName = "dbzh1g3j0";
+
+export const IntroData = {
+  "video": "RA AWB/Preview-Hero-Zone"
+}
+
+
 export const sliderData2 = [
   {
     title: "Rapport annuel",
