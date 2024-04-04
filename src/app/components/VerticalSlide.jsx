@@ -216,7 +216,7 @@ export const MenuOverlay = ({ onClose }) => {
       triggerOnce={false}
       className="fixed top-0 left-0 w-full h-full p-5 z-[11]"
     >
-      <div className="bg-black pl-7 md:pl-14 w-full h-full lg:rounded-[32px] flex items-center justify-center">
+      <div className="bg-black pl-7 pb-5 md:pl-14 w-full h-full lg:rounded-[32px] flex items-center justify-center">
       <button
             className="absolute top-10 left-10 z-[10] bg-transparent border-0 cursor-pointer"
             onClick={onClose}
