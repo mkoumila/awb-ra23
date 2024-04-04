@@ -240,7 +240,7 @@ export const MenuOverlay = ({ onClose }) => {
             src="/Super-menu.png"
             fill
             alt="menu overlay"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
         </div>
       </div>
