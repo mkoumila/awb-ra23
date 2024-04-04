@@ -214,7 +214,7 @@ export const MenuOverlay = ({ onClose }) => {
       cascade
       duration={500}
       triggerOnce={false}
-      className="fixed top-0 left-0 w-full h-full p-5 z-[9]"
+      className="fixed top-0 left-0 w-full h-full p-5 z-[11]"
     >
       <div className="bg-black w-full h-full lg:rounded-[32px] flex items-center justify-center">
       <button

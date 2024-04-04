@@ -53,6 +53,20 @@ const SwiperItemDesktop = ({
     }
   };
 
+
+  useEffect(() => {
+
+		document.addEventListener("keyup", (e) => {
+			if (e.key === "Escape") {
+        const videoElement = videoRefs.current[index].current;
+        if (videoElement) {
+          resetOverlayVisibility()
+        }
+			}
+		})
+	}, [index])
+
+
   return (
     <>
       {/* Overlay component */}
