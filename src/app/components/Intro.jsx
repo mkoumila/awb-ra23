@@ -1,72 +1,8 @@
-import { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { CloudinaryContext, Transformation, Video } from "cloudinary-react";
 
 import { SliderThumbnail } from "./sliderthumbnail";
-import { useRef } from "react";
 
-const Intro = ({
-  swiperInstance,
-  data,
-  cloudinaryName,
-  openMenuOverlay,
-  currentIndexSwiper,
-}) => {
-  const refVideo = useRef(null);
-  const [showVideo, setShowVideo] = useState(false);
-
-  const togglePlayPause = () => {
-    const videoElement = refVideo.current;
-    console.log(videoElement); // Check if videoElement is logged correctly
-    if (videoElement) {
-      if (videoElement.paused || videoElement.ended) {
-        videoElement.play();
-      } else {
-        videoElement.pause();
-      }
-    }
-  };
-
-  const playVideo = () => {
-    const videoElement = refVideo.current;
-    //console.log(videoElement); // Check if videoElement is logged correctly
-    if (videoElement) {
-      if (videoElement.paused || videoElement.ended) {
-        setShowVideo(true);
-        const _timer = setTimeout(() => {
-          videoElement.play();
-          clearTimeout(_timer);
-        }, 200);
-      }
-    }
-  };
-
-  const Pausevideo = () => {
-    const videoElement = refVideo.current;
-    //console.log(videoElement); // Check if videoElement is logged correctly
-    if (videoElement) {
-      if (!videoElement.paused && !videoElement.ended) {
-        videoElement.pause();
-        const _timer = setTimeout(() => {
-          setShowVideo(false);
-          clearTimeout(_timer);
-        }, 200);
-      }
-    }
-  };
-
-  useEffect(() => {
-    const videoElement = refVideo.current;
-    //console.log(videoElement); // Check if videoElement is logged correctly
-    if (videoElement && currentIndexSwiper != -1 && showVideo) {
-      console.log("videoElement", videoElement);
-      //console.log("normalement hide image")
-      videoElement.pause();
-      setShowVideo(false);
-    }
-  }, [currentIndexSwiper]);
-
+const Intro = ({ swiperInstance, data, cloudinaryName, openMenuOverlay }) => {
   return (
     <div className="lg:p-5 lg:h-dvh relative min-h-screen">
       <div className="relative bg-white lg:rounded-[32px] overflow-y-scroll h-dvh lg:h-full p-8 pb-28 md:px-11 md:py-7 flex flex-col justify-between">
@@ -81,35 +17,13 @@ const Intro = ({
             alt="ouvrir le menu"
           />
         </button>
-        <CloudinaryContext
-          cloudName={cloudinaryName}
-          className={`absolute top-0 left-0 w-full h-full object-cover ${
-            showVideo ? "block" : "hidden"
-          }`}
-        >
-          <Video
-            publicId="RA AWB/Preview-Hero-Zone"
-            className={`h-full w-full object-cover`}
-            //innerRef={videoRefs.current[index]} // Link the ref to the video element``
-            innerRef={refVideo} // Use refVideo directly without .current
-            secure={true}
-            autoplay={true}
-            loop={true}
-            muted={true}
-            //onClick={togglePlayPause}
-          >
-            <Transformation fetchFormat="webm" quality="auto" />
-          </Video>
-        </CloudinaryContext>
         <Image
           src="/backgrounds/Background01.png"
           fill
-          className={`absolute top-0 left-0 w-full h-full object-cover ${
-            !showVideo ? "block" : "hidden"
-          }`}
+          className={`absolute top-0 left-0 w-full h-full object-right-top md:object-center object-cover`}
         />
         <div className="relative">
-          <div className="flex justify-end">
+          <div className="flex justify-center md:justify-end">
             <h1 className="sr-only">
               Bienvenue sur Agency.Africa, l'offre de création publicitaire et
               contenus de marque de l'agence digitale Void.
@@ -145,11 +59,7 @@ const Intro = ({
             </div>
             <button
               className="flex flex-col items-center py-3 cursor-pointer bg-transparent border-none md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
-              onMouseEnter={playVideo}
-              onClick={() => {
-                swiperInstance.slideTo(1);
-                Pausevideo();
-              }}
+              onClick={() => swiperInstance.slideTo(1)}
             >
               <Image
                 src="/play.svg"

@@ -53,19 +53,16 @@ const SwiperItemDesktop = ({
     }
   };
 
-
   useEffect(() => {
-
-		document.addEventListener("keyup", (e) => {
-			if (e.key === "Escape") {
+    document.addEventListener("keyup", (e) => {
+      if (e.key === "Escape") {
         const videoElement = videoRefs.current[index].current;
         if (videoElement) {
-          resetOverlayVisibility()
+          resetOverlayVisibility();
         }
-			}
-		})
-	}, [index])
-
+      }
+    });
+  }, [index]);
 
   return (
     <>
@@ -93,7 +90,12 @@ const SwiperItemDesktop = ({
         />
         <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
           <div
-            onClick={() => playVideo(index)}
+            onClick={() => {
+              // To show the video component ( for better performance )
+              setShowVideo(true);
+              // Play the video
+              playVideo(index);
+            }}
             className="group cursor-pointer flex flex-col items-center"
           >
             <Animate
