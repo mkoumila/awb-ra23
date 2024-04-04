@@ -62,66 +62,66 @@ export const sliderData2 = [
 
 export const sliderData = [
   {
-    "title": "Édito",
-    "content": "Entretien avec Monsieur Mohamed El Kettani,\nPrésident Directeur Général du Groupe Attijariwafa bank.  1:55",
+    "title": "Profil du Groupe",
+    "content": "Entretien avec Monsieur Mohamed El Kettani, \n Président Directeur Général du Groupe Attijariwafa bank.",
     "delai": "01:55",
-    "image": "",
+    "image": "RA AWB/thumbnails/edito",
     "alt": "Biogaran - Spot publicitaire de marque pour la CAN 2024",
     "thumbnail": "RA AWB/thumbnails/edito",
     "thumbnail_alt": "",
-    "thumbnail_gif": "",
+    "thumbnail_gif": "RA AWB/thumbnails/edito",
     "video": "RA AWB/Preview-09",
     "id": "edito",
     "fichier": ""
   },
   {
     "title": "Stratégie & développements",
-    "content": "Des ambitions fortes sur trois leviers majeurs. Madame Yasmine Aboudrar, Directrice Exécutive Stratégie & Développements Groupe.",
+    "content": "Des ambitions fortes sur trois leviers majeurs. \n Madame Yasmine Aboudrar, Directrice Exécutive Stratégie & Développements Groupe",
     "delai": "02:32",
     "image": "RA AWB/thumbnails/strategie_developpements",
     "alt": "",
-    "thumbnail": "RA AWB/gifs/strategie_developpements-off",
+    "thumbnail": "/gifs/strategie_developpements-off.gif",
     "thumbnail_alt": "",
-    "thumbnail_gif": "RA AWB/gifs/strategie_developpements-on",
+    "thumbnail_gif": "/gifs/strategie_developpements-on.gif",
     "video": "RA AWB/Preview-01",
     "id": "strategie_developpements",
     "fichier": ""
   },
   {
     "title": "Excellence relationnelle",
-    "content": "La centricité client au cœur de toutes nos ambitions. Hassan Bertal, Directeur Général Délégué, Pôle Banque de Détail Maroc et Europe.",
+    "content": "La centricité client au cœur de toutes nos ambitions.\n Hassan Bertal, Directeur Général Délégué, Pôle Banque de Détail Maroc et Europe.",
     "delai": "01:48",
     "image": "RA AWB/thumbnails/excelence_relationnelle",
     "alt": "",
-    "thumbnail": "RA AWB/gifs/excelence_relationnelle-off",
+    "thumbnail": "/gifs/excelence_relationnelle-off.gif",
     "thumbnail_alt": "",
-    "thumbnail_gif": "RA AWB/gifs/excelence_relationnelle-on",
+    "thumbnail_gif": "/gifs/excelence_relationnelle-on.gif",
     "video": "RA AWB/Preview-02",
     "id": "excellence_relationnelle",
     "fichier": ""
   },
   {
     "title": "Innovation & transformation",
-    "content": "L’innovation pour se réinventer en continu. Hassan El Bedraoui, Directeur Général Délégué, Pôle Transformation, Innovation, Technologies et Opérations. 3:02",
+    "content": "L’innovation pour se réinventer en continu.\n Hassan El Bedraoui, Directeur Général Délégué, Pôle Transformation, Innovation, Technologies et Opérations.",
     "delai": "03:02",
     "image": "RA AWB/thumbnails/innovation_transformation",
     "alt": "",
-    "thumbnail": "RA AWB/gifs/innovation_transformation-off",
+    "thumbnail": "/gifs/innovation_transformation-off.gif",
     "thumbnail_alt": "",
-    "thumbnail_gif": "RA AWB/gifs/innovation_transformation-on",
+    "thumbnail_gif": "/gifs/innovation_transformation-on.gif",
     "video": "RA AWB/Preview-03",
     "id": "innovation_transformation",
     "fichier": ""
   },
   {
     "title": "Un groupe Panafricain",
-    "content": "L’engagement volontariste pour un développement durable en Afrique. Ismail Douiri, Directeur Général Délégué, Pôle Banque de Détail à l’International et Filiales de Financement Spécialisées. 2:35",
+    "content": "L’engagement volontariste pour un développement durable en Afrique.\n Ismail Douiri, Directeur Général Délégué, Pôle Banque de Détail à l’International et Filiales de Financement Spécialisées.",
     "delai": "02:35",
     "image": "RA AWB/thumbnails/group_panafricain",
     "alt": "",
-    "thumbnail": "RA AWB/gifs/group_panafricain-off",
+    "thumbnail": "/gifs/group_panafricain-off.gif",
     "thumbnail_alt": "",
-    "thumbnail_gif": "RA AWB/gifs/group_panafricain-on",
+    "thumbnail_gif": "/gifs/group_panafricain-on.gif",
     "video": "RA AWB/Preview-04",
     "id": "groupe_panafricain",
     "fichier": ""
@@ -132,9 +132,9 @@ export const sliderData = [
     "delai": "",
     "image": "RA AWB/thumbnails/strategie_developpements",
     "alt": "",
-    "thumbnail": "RA AWB/gifs/strategie_developpements-off",
+    "thumbnail": "/gifs/rapport_financier-off.gif",
     "thumbnail_alt": "",
-    "thumbnail_gif": "RA AWB/gifs/strategie_developpements-on",
+    "thumbnail_gif": "/gifs/rapport_financier-on.gif",
     "video": "",
     "id": "rapport_financier",
     "fichier": ""

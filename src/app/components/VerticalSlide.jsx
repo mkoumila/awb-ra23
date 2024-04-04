@@ -18,9 +18,20 @@ import SwiperItemMobile from "./SwiperItemMobile";
 import SwiperItemDesktop from "./SwiperItemDesktop";
 import { useBreakPoint } from "../hooks/useBreakPoint";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { Animate } from "./Animate";
 
 export const VerticalSlider = ({ data, slug }) => {
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openMenuOverlay = () => {
+    setIsOpen(true);
+  };
+
+  const closeMenuOverlay = () => {
+    setIsOpen(false);
+  };
 
   // get the current device ( changes of viewport resizing )
   const device = useBreakPoint();
@@ -93,6 +104,8 @@ export const VerticalSlider = ({ data, slug }) => {
   return (
     <>
       <div className="relative">
+        {isOpen && <MenuOverlay onClose={closeMenuOverlay} />}
+
         <Swiper
           cssMode
           speed={500}
@@ -111,7 +124,12 @@ export const VerticalSlider = ({ data, slug }) => {
           }`}
         >
           <SwiperSlide data-hash="intro">
-            <Intro swiperInstance={swiperInstance} data={data} cloudinaryName={cloudinaryName} />
+            <Intro
+              swiperInstance={swiperInstance}
+              data={data}
+              cloudinaryName={cloudinaryName}
+              openMenuOverlay={openMenuOverlay}
+            />
           </SwiperSlide>
           {data.map((item, index) => {
             return (
@@ -138,6 +156,7 @@ export const VerticalSlider = ({ data, slug }) => {
                     videoRefs={videoRefs}
                     isVisible={overlayVisibility} // Pass visibility state
                     swiperInstance={swiperInstance}
+                    openMenuOverlay={openMenuOverlay}
                     resetOverlayVisibility={() =>
                       setOverlayVisibility(data.map(() => true))
                     }
@@ -178,5 +197,38 @@ export const VerticalSlider = ({ data, slug }) => {
           )}
       </div>
     </>
+  );
+};
+
+export const MenuOverlay = ({ onClose }) => {
+  return (
+    <Animate
+      animationType="fade"
+      //direction="down"
+      cascade
+      duration={500}
+      triggerOnce={false}
+      className="fixed top-0 left-0 w-full h-full p-14 pt-0 bg-black z-[9]"
+    >
+      <div className="relative w-full h-full">
+        <button
+          className="absolute top-10 left-[-16px] z-[10] bg-transparent border-0 cursor-pointer"
+          onClick={onClose}
+        >
+          <Image
+            src={"/close.svg"}
+            width={24}
+            height={24}
+            alt="ouvrir le menu"
+          />
+        </button>
+        <Image
+          src="/Super-menu.png"
+          fill
+          alt="menu overlay"
+          className="w-full h-full object-cover"
+        />
+      </div>
+    </Animate>
   );
 };

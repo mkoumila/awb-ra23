@@ -78,7 +78,7 @@ const SwiperItemMobile = ({
           )}
         </Animate>
         <div
-          className="flex h-[67px] w-[67px] cursor-pointer items-center justify-center rounded-full bg-bloody text-white font-extrabold leading-[47px] text-xl absolute right-4 bottom-4 uppercase shadow-lg"
+          className="flex h-[67px] w-[67px] cursor-pointer items-center justify-center rounded-full bg-orange-500 text-white font-extrabold leading-[47px] text-xl absolute right-4 bottom-4 uppercase shadow-lg"
           onClick={() => {
             // To show the video component ( for better performance )
             setShowVideo(true);
@@ -203,7 +203,7 @@ const Controls = ({
           title: "Share This Page",
           url: currentUrl,
         })
-        .catch((error) => console.log("Error sharing:", error));
+        .catch((error) => console.error("Error sharing:", error));
     } else {
       // Fallback to opening the share URL in a new tab/popup
       const shareUrl = `https://www.addtoany.com/share?url=${encodeURIComponent(
@@ -244,7 +244,7 @@ const Controls = ({
         </div>
       </div>
       <div
-        className="flex h-[67px] w-[67px] cursor-pointer items-center justify-center rounded-full bg-bloody text-white font-extrabold leading-[47px] text-xl uppercase"
+        className="flex h-[67px] w-[67px] cursor-pointer items-center justify-center rounded-full bg-orange-500 text-white font-extrabold leading-[47px] text-xl uppercase"
         onClick={() =>
           !(swiperInstance?.realIndex === swiperInstance?.slides.length - 1)
             ? swiperInstance.slideNext()

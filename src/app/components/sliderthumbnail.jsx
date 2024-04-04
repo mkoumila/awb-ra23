@@ -1,18 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+//import { Pagination } from "swiper/modules";
 import Image from "next/image";
 
 export const SliderThumbnail = ({ data, cloudinaryName, swiperInstance }) => {
-  console.log({ data });
+  const [isLoaded, setIsLoaded] = useState(false);
 
   return (
     <div className="pb-10">
       <Swiper
-        slidesPerView={5}
-        spaceBetween={30}
+        slidesPerView={1}
+        spaceBetween={16}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 50,
+          },
+          1100: {
+            slidesPerView: 5,
+            spaceBetween: 50,
+          },
+        }}
         pagination={{
           clickable: true,
+          /*
           renderBullet: function (index, className) {
             return (
               '<span class="w-[18px] h-[18px] border-white bg-transparent ' +
@@ -22,11 +41,18 @@ export const SliderThumbnail = ({ data, cloudinaryName, swiperInstance }) => {
               "</span>"
             );
           },
+          */
         }}
-        modules={[Pagination]}
-        className="mySwiper"
+        onInit={(swiper) => {
+          setIsLoaded(true);
+        }}
+        //modules={[Pagination]}
+        className={`mySwiper ${
+          isLoaded ? "grid grid-cols-5 gap-5" : "grid grid-cols-5 gap-5"
+        }`}
       >
         {data?.map((item, index) => {
+          if (index === 0) return null;
           return (
             <SwiperSlide>
               <Thumbnail
@@ -39,12 +65,19 @@ export const SliderThumbnail = ({ data, cloudinaryName, swiperInstance }) => {
           );
         })}
       </Swiper>
+      <ThumbnailPagination />
     </div>
   );
 };
 
 export const ThumbnailPagination = () => {
-  return <div></div>;
+  return (
+    <div className="flex items-center gap-4 justify-center pt-5">
+      <span className="w-[18px] h-[18px] rounded-full bg-white border border-white"></span>
+      <span className="w-[18px] h-[18px] rounded-full border border-white"></span>
+      <span className="w-[18px] h-[18px] rounded-full border border-white"></span>
+    </div>
+  );
 };
 
 export const Thumbnail = ({
@@ -66,20 +99,12 @@ export const Thumbnail = ({
         {delai}
       </span>
       <div className="block group-hover:hidden">
-        <Image
-          src={`https://res.cloudinary.com/${cloudinaryName}/image/upload/f_webp,q_auto/v1/${thumbnail}`}
-          alt={alt}
-          fill
-        />
+        <Image src={`${thumbnail}`} alt={alt} fill />
       </div>
       <div className="hidden group-hover:block">
-        <Image
-          src={`https://res.cloudinary.com/${cloudinaryName}/image/upload/f_webp,q_auto/v1/${thumbnail_gif}`}
-          alt={alt}
-          fill
-        />
+        <Image src={`${thumbnail_gif}`} alt={alt} fill />
       </div>
-      <h3 className="text-[28px] font-semibold leading-7 text-center relative">
+      <h3 className="text-[25px] leading-[25px] font-medium fnt-sofia-extra text-center relative max-w-[150px]">
         {title}
       </h3>
     </div>

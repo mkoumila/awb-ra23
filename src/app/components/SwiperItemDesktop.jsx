@@ -22,6 +22,7 @@ const SwiperItemDesktop = ({
   isVisible,
   swiperInstance,
   file,
+  openMenuOverlay,
   resetOverlayVisibility,
 }) => {
   // Control the visibility of the overlay using the isVisible prop
@@ -59,9 +60,20 @@ const SwiperItemDesktop = ({
         className="absolute left-5 top-5 z-10 h-[calc(100%-40px)] w-[calc(100%-40px)] text-white rounded-[32px] overflow-hidden"
         style={overlayStyle}
       >
+        <button
+          className="absolute top-6 left-5 z-[10] bg-transparent border-0 cursor-pointer"
+          onClick={openMenuOverlay}
+        >
+          <Image
+            src={"/menu-burger.svg"}
+            width={24}
+            height={24}
+            alt="ouvrir le menu"
+          />
+        </button>
         <Image
           className="absolute top-0 left-0 w-full h-full object-cover brightness-75"
-          src={`https://res.cloudinary.com/${cloudinaryName}/image/upload/f_webp,q_auto/v1/${thumbnail}`}
+          src={`https://res.cloudinary.com/${cloudinaryName}/image/upload/f_webp,q_auto/v1/${image}`}
           alt={alt}
           fill
         />
@@ -137,9 +149,9 @@ const SwiperItemDesktop = ({
         )}
 
         {/** file */}
-        <Link
-          href="/"
-          className="absolute bottom-6 left-6 inline-flex items-center gap-4 text-base font-bold leading-[30px] tracking-[0.02em] text-center text-white hover:underline"
+        <p
+          //href="/"
+          className="absolute bottom-6 right-6 inline-flex items-center gap-2 text-base font-bold leading-[30px] tracking-[0.02em] text-center text-white cursor-pointer"
         >
           <Image
             src="/download-file.svg"
@@ -147,15 +159,18 @@ const SwiperItemDesktop = ({
             height={43}
             className="relative top-1"
           />
-          <span>Télécherger le .pdf</span>
-        </Link>
+          <span className="text-left text-[15px] leading-[17px]">
+            Télécherger <br />
+            le rapport financier
+          </span>
+        </p>
       </div>
 
       {/* Video component */}
       {showVideo && (
         <CloudinaryContext
           cloudName={cloudinaryName}
-          className="h-full overflow-hidden rounded-[32px] relative"
+          className="h-full overflow-hidden rounded-[32px] relative z-[20]"
         >
           <Video
             publicId={video}
