@@ -44,10 +44,11 @@ const Intro = ({ swiperInstance, data, cloudinaryName, openMenuOverlay}) => {
                 width={442}
                 height={291}
                 alt="rapport annuel 2023"
+                className="md:w-[442px] md:h-[291] w-[300px] h-auto"
               />
             </div>
           </div>
-          <div className="grid md:grid-cols-2 relative text-white mt-[60px]">
+          <div className="grid md:grid-cols-2 relative text-white mt-10 md:mt-[60px]">
             <div className="relative text-[20px] leading-[24px] md:text-[25px] font-medium md:leading-7 md:pr-8">
               <p>
                 Identité, stratégie, développement, gouvernance, chiffres et
@@ -58,7 +59,7 @@ const Intro = ({ swiperInstance, data, cloudinaryName, openMenuOverlay}) => {
               </p>
             </div>
             <button
-              className="flex flex-col items-center py-3 cursor-pointer bg-transparent border-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              className="flex flex-col items-center py-3 cursor-pointer bg-transparent border-none md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
               onClick={() => swiperInstance.slideTo(1)}
             >
               <Image
