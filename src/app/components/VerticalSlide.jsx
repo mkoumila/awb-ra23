@@ -42,7 +42,7 @@ export const VerticalSlider = ({ data, slug }) => {
   // Pagination state to handle the pagination visibility
   const [paginationText, setPaginationText] = useState("");
 
-  const [currentIndexSwiper, setCurrentIndexSwiper] = useState(0)
+  const [currentIndexSwiper, setCurrentIndexSwiper] = useState(0);
 
   // Create an array of refs to store references to the video DOM elements
   const videoRefs = useRef(data.map(() => createRef()));
@@ -73,7 +73,7 @@ export const VerticalSlider = ({ data, slug }) => {
     const currentIndex = swiper?.realIndex - 1;
     const totalSlides = swiper?.slides?.length - 1 || data.length;
 
-    setCurrentIndexSwiper(currentIndex)
+    setCurrentIndexSwiper(currentIndex);
     // Conditionally setting the pagination text
     if (currentIndex >= 0) {
       setPaginationText(
@@ -214,26 +214,35 @@ export const MenuOverlay = ({ onClose }) => {
       cascade
       duration={500}
       triggerOnce={false}
-      className="fixed top-0 left-0 w-full h-full p-14 pt-0 bg-black z-[9]"
+      className="fixed top-0 left-0 w-full h-full p-5 z-[9]"
     >
-      <div className="relative w-full h-full">
-        <button
-          className="absolute top-10 left-[-16px] z-[10] bg-transparent border-0 cursor-pointer"
-          onClick={onClose}
-        >
+      <div className="bg-black w-full h-full lg:rounded-[32px] flex items-center justify-center">
+      <button
+            className="absolute top-10 left-10 z-[10] bg-transparent border-0 cursor-pointer"
+            onClick={onClose}
+          >
+            <Image
+              src={"/close.svg"}
+              width={24}
+              height={24}
+              alt="ouvrir le menu"
+            />
+          </button>
           <Image
-            src={"/close.svg"}
-            width={24}
-            height={24}
-            alt="ouvrir le menu"
+              src="/logo.png"
+              width={203}
+              height={65}
+              alt="Agency Africa Logo"
+              className="absolute top-[49px] right-[64px]"
+            />
+        <div className="relative w-[90%] h-[90%]">
+          <Image
+            src="/Super-menu.png"
+            fill
+            alt="menu overlay"
+            className="w-full h-full object-cover"
           />
-        </button>
-        <Image
-          src="/Super-menu.png"
-          fill
-          alt="menu overlay"
-          className="w-full h-full object-cover"
-        />
+        </div>
       </div>
     </Animate>
   );
