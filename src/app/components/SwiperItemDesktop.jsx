@@ -8,7 +8,7 @@ const SwiperItemDesktop = ({
   cloudinaryName,
   title,
   content,
-  delay,
+  delai,
   image,
   thumbnail,
   thumbnail_alt,
@@ -95,8 +95,13 @@ const SwiperItemDesktop = ({
                 </h2>
               )}
               {content && (
-                <p className="text-3xl font-bold leading-[30px] tracking-[0.02em] text-center whitespace-pre-wrap max-w-[1000px]">
+                <p className="text-3xl font-bold leading-[30px] tracking-[0.02em] text-center whitespace-pre-wrap max-w-[1000px] mt-2">
                   {content}
+                </p>
+              )}
+              {delai && (
+                <p className="text-3xl font-bold leading-[30px] tracking-[0.02em] text-center whitespace-pre-wrap max-w-[1000px] mt-6">
+                  {delai}
                 </p>
               )}
             </Animate>

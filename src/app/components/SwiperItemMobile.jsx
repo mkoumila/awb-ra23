@@ -8,6 +8,7 @@ const SwiperItemMobile = ({
   cloudinaryName,
   title,
   content,
+  delai,
   image,
   alt,
   video,
@@ -74,6 +75,11 @@ const SwiperItemMobile = ({
           {content && (
             <p className="text-xl font-bold text-center max-w-[250px] mx-auto leading-[normal]">
               {content}
+            </p>
+          )}
+          {delai && (
+            <p className="text-xl font-bold text-center max-w-[250px] mx-auto leading-[normal]">
+              {delai}
             </p>
           )}
         </Animate>

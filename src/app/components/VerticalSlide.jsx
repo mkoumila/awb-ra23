@@ -144,7 +144,7 @@ export const VerticalSlider = ({ data, slug }) => {
                     cloudinaryName={cloudinaryName}
                     title={item.title}
                     content={item.content}
-                    delay={item?.delay}
+                    delai={item?.delai}
                     image={item.image}
                     thumbnail={item?.thumbnail}
                     alt={item.alt}
@@ -163,9 +163,11 @@ export const VerticalSlider = ({ data, slug }) => {
                   />
                 ) : (
                   <SwiperItemMobile
+                    {...item}
                     cloudinaryName={cloudinaryName}
                     title={item.title}
                     content={item.content}
+                    delai={item?.delai}
                     image={item.image}
                     alt={item.alt}
                     video={item.video}

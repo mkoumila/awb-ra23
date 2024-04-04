@@ -130,7 +130,7 @@ export const sliderData = [
     "title": "Rapport financier",
     "content": "",
     "delai": "",
-    "image": "RA AWB/thumbnails/strategie_developpements",
+    "image": "RA AWB/thumbnails/rapport_financier",
     "alt": "",
     "thumbnail": "/gifs/rapport_financier-off.gif",
     "thumbnail_alt": "",
