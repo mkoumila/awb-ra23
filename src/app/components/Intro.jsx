@@ -20,7 +20,7 @@ const Intro = ({ swiperInstance, data, cloudinaryName, openMenuOverlay }) => {
         <Image
           src="/backgrounds/Background01.png"
           fill
-          className={`absolute top-0 left-0 w-full h-full object-right-top md:object-center object-cover`}
+          className={`absolute top-0 left-0 w-full h-full object-[right_30%_top_0%] md:object-center object-cover`}
         />
         <div className="relative">
           <div className="flex justify-center md:justify-end">
