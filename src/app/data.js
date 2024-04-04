@@ -135,7 +135,7 @@ export const sliderData = [
     "thumbnail": "/gifs/rapport_financier-off.gif",
     "thumbnail_alt": "",
     "thumbnail_gif": "/gifs/rapport_financier-on.gif",
-    "video": "",
+    "video": "RA AWB/Preview-10",
     "id": "rapport_financier",
     "fichier": ""
   }
