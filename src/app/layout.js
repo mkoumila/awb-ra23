@@ -2,9 +2,9 @@ import "./globals.css";
 import Script from "next/script";
 
 export const metadata = {
-  title: "Agence de communication publicitaire et brand content en Afrique",
+  title: "Rapport annuel de Attijariwafabank - 2023",
   description:
-    "Film institutionnel, campagne publicitaire, rapport annuel vidéo, reportage, interview, capsule motion design, prise de vue drone, animation 3D",
+    "Identité, stratégie, développement, gouvernance, chiffres et performances. Découvrez en vidéo les faits marquants de l'année 2023 du Groupe Attijariwafa bank.",
   icons: {
     icon: [
       {
@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <head>
-        <Script
+{/*        <Script
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
@@ -34,17 +34,17 @@ export default function RootLayout({ children }) {
           })(window,document,'script','dataLayer', '${GTM_ID}');
         `,
           }}
-        />
+        />*/}
       </head>
       <body>
-        <noscript>
+{/*        <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
-        </noscript>
+        </noscript>*/}
         {children}
       </body>
       <Script async src="https://static.addtoany.com/menu/page.js" />
