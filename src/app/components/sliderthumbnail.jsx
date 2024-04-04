@@ -104,7 +104,7 @@ export const Thumbnail = ({
       <div className="hidden group-hover:block">
         <Image src={`${thumbnail_gif}`} alt={alt} fill />
       </div>
-      <h3 className="text-[25px] leading-[25px] font-medium fnt-sofia-extra text-center relative max-w-[150px]">
+      <h3 className="text-[25px] leading-[25px] font-semibold fnt-sofia-extra text-center relative max-w-[150px]">
         {title}
       </h3>
     </div>
