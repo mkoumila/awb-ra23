@@ -175,7 +175,7 @@ const SwiperItemDesktop = ({
       {showVideo && (
         <CloudinaryContext
           cloudName={cloudinaryName}
-          className="h-full overflow-hidden rounded-[32px] relative z-[20]"
+          className="h-full overflow-hidden rounded-[32px] relative"
         >
           <Video
             publicId={video}
