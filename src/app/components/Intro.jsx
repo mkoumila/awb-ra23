@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { SliderThumbnail } from "./sliderthumbnail";
 
@@ -28,13 +29,15 @@ const Intro = ({ swiperInstance, data, cloudinaryName, openMenuOverlay }) => {
               Bienvenue sur Agency.Africa, l'offre de création publicitaire et
               contenus de marque de l'agence digitale Void.
             </h1>
-            <Image
-              src="/logo.png"
-              width={203}
-              height={65}
-              alt="Agency Africa Logo"
-              className=""
-            />
+            <Link href="/">
+              <Image
+                src="/logo.png"
+                width={203}
+                height={65}
+                alt="Agency Africa Logo"
+                className=""
+              />
+            </Link>
           </div>
           <div className="text-white grid md:grid-cols-2 mt-5">
             <div>
