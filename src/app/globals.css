@@ -32,3 +32,12 @@ body,
   @apply bg-cover;
   background-image: url('/masque-intro.png');
 }
+
+
+.background-root-hp {
+  @apply bg-cover;
+  background-image: url('/masque-intro.png');
+  background-position: top -48px left -20px;
+  background-size: 100% 600px;
+  background-repeat: no-repeat;
+}

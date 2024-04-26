@@ -84,14 +84,18 @@ export const Thumbnail = ({
   title,
   delai,
   cloudinaryName = "",
-  swiperInstance,
+  swiperInstance = null,
+  onClick = null,
 }) => {
   return (
     <div
-      className="group aspect-video relative text-white flex pb-5 items-end justify-center rounded-2xl overflow-hidden cursor-pointer"
-      onClick={() => swiperInstance.slideTo(index)}
+      className="group aspect-[250/158] relative text-white flex items-end justify-center rounded-2xl overflow-hidden cursor-pointer"
+      onClick={() => {
+        swiperInstance && swiperInstance.slideTo(index);
+        onClick && onClick();
+      }}
     >
-      <span className="text-base font-semibold leading-7 absolute top-4 left-4 z-[2]">
+      <span className="text-base font-semibold leading-7 absolute top-1 left-4 z-[2]">
         {delai}
       </span>
       <div className="block group-hover:hidden">
@@ -100,7 +104,7 @@ export const Thumbnail = ({
       <div className="hidden group-hover:block">
         <Image src={`${thumbnail_gif}`} alt={alt} fill priority={true} />
       </div>
-      <h3 className="text-[25px] leading-[25px] font-semibold fnt-sofia-extra text-center relative max-w-[150px]">
+      <h3 className="text-[25px] leading-[25px] font-semibold fnt-sofia-extra text-center relative max-w-[150px] pb-5">
         {title}
       </h3>
     </div>
