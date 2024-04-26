@@ -37,6 +37,8 @@ export const ImageSlider = ({
             //swiperInstance={swiperInstance}
             //cloudinaryName={cloudinaryName}
             {...sliderData[1]}
+            title={"2023"}
+            bigtitle={true}
             onClick={handleClick}
           />
         )}

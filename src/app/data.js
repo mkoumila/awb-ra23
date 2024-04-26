@@ -218,15 +218,15 @@ export const SLIDERS_DATA_IMAGES = [
         img_alt: "image 01",
       },
       {
-        img: img6,
-        img_alt: "image 01",
-      },
-      {
         img: img7,
         img_alt: "image 01",
       },
       {
         img: img8,
+        img_alt: "image 01",
+      },
+      {
+        img: img9,
         img_alt: "image 01",
       },
     ],

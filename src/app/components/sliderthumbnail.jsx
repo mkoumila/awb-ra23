@@ -86,6 +86,7 @@ export const Thumbnail = ({
   cloudinaryName = "",
   swiperInstance = null,
   onClick = null,
+  bigtitle = false,
 }) => {
   return (
     <div
@@ -104,7 +105,13 @@ export const Thumbnail = ({
       <div className="hidden group-hover:block">
         <Image src={`${thumbnail_gif}`} alt={alt} fill priority={true} />
       </div>
-      <h3 className="text-[25px] leading-[25px] font-semibold fnt-sofia-extra text-center relative max-w-[150px] pb-5">
+      <h3
+        className={
+          bigtitle
+            ? "text-[53px] leading-[25px] font-semibold fnt-sofia-extra text-center relative max-w-[150px] pb-[27px]"
+            : "text-[25px] leading-[25px] font-semibold fnt-sofia-extra text-center relative max-w-[150px] pb-5"
+        }
+      >
         {title}
       </h3>
     </div>
