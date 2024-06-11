@@ -12,8 +12,7 @@ const SwiperItemMobile = ({
   image,
   alt,
   video,
-  isAward,
-  isStrategiesGrandPrix,
+
   index,
   playVideo,
   videoRefs,
@@ -94,36 +93,6 @@ const SwiperItemMobile = ({
         >
           PLAY
         </div>
-        {isAward && (
-          <Animate
-            animationType="fade"
-            direction="left"
-            className="absolute left-0 -top-20 -translate-y-1/2 shadow-lg"
-          >
-            <Image
-              src="/awards_clapclaptours.png"
-              width={362}
-              height={125}
-              className="w-72 h-auto"
-              alt="awards clapclaptours"
-            />
-          </Animate>
-        )}
-        {isStrategiesGrandPrix && (
-          <Animate
-            animationType="fade"
-            direction="left"
-            className="absolute left-0 -top-[108px] -translate-y-1/2 shadow-lg"
-          >
-            <Image
-              src="/strategies_grand_prix.png"
-              width={250}
-              height={125}
-              className="w-64 h-auto"
-              alt="strategies grand prix"
-            />
-          </Animate>
-        )}
         {/* Show Next Slide Arrow only if it's not the last slide */}
         {!(
           swiperInstance?.realIndex ===

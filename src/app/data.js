@@ -1,4 +1,4 @@
-import img1 from "../../public/hp/1.png";
+/* import img1 from "../../public/hp/1.png";
 import img2 from "../../public/hp/2.png";
 import img3 from "../../public/hp/3.png";
 import img4 from "../../public/hp/4.png";
@@ -27,6 +27,7 @@ import img25 from "../../public/hp/25.png";
 import img26 from "../../public/hp/26.png";
 import img27 from "../../public/hp/27.png";
 import img28 from "../../public/hp/28.png";
+*/
 
 export const cloudinaryName = "dbzh1g3j0";
 
@@ -34,7 +35,7 @@ export const IntroData = {
   video: "RA AWB/Preview-Hero-Zone",
 };
 
-export const sliderData2 = [
+/* export const sliderData2 = [
   {
     title: "Rapport annuel",
     subtitle: "2023",
@@ -93,95 +94,77 @@ export const sliderData2 = [
     isAward: false,
     isStrategiesGrandPrix: false,
   },
-];
+]; */
 
 export const sliderData = [
   {
-    title: "Profil du Groupe",
+    title: "Profil\ndu Groupe",
     content:
       "Entretien avec Monsieur Mohamed El Kettani, \n Président Directeur Général du Groupe Attijariwafa bank.",
-    delai: "01:55",
-    image: "RA AWB/thumbnails/edito",
-    alt: "Biogaran - Spot publicitaire de marque pour la CAN 2024",
-    thumbnail: "RA AWB/thumbnails/edito",
+    delai: "1:55",
+    image: "RA AWB/thumbnails/profil-du-groupe",
+    alt: "image alt",
+    thumbnail: "RA AWB/thumbnails/profil-du-groupe",
     thumbnail_alt: "",
-    thumbnail_gif: "RA AWB/thumbnails/edito",
+    thumbnail_gif: "RA AWB/thumbnails/profil-du-groupe",
     video: "RA AWB/Preview-09",
     id: "edito",
-    fichier: "",
   },
   {
-    title: "Stratégie & développements",
+    title: "UN GROUPE\nRELATIONNEL",
     content:
-      "Des ambitions fortes sur trois leviers majeurs. \n Madame Yasmine Aboudrar, Directrice Exécutive Stratégie & Développements Groupe",
+      "Youssef Rouissi,Directeur Général Délégué, Pôle Corporate & Investment Banking.\nHassan Bertal, Directeur Général Délégué, Pôle Banque de Détail Maroc et Europe.",
     delai: "02:32",
-    image: "RA AWB/thumbnails/strategie_developpements",
-    alt: "",
-    thumbnail: "/gifs/strategie_developpements-off.gif",
-    thumbnail_alt: "",
-    thumbnail_gif: "/gifs/strategie_developpements-on.gif",
-    video: "RA AWB/Preview-01",
-    id: "strategie_developpements",
-    fichier: "",
-  },
-  {
-    title: "Excellence relationnelle",
-    content:
-      "La centricité client au cœur de toutes nos ambitions.\n Hassan Bertal, Directeur Général Délégué, Pôle Banque de Détail Maroc et Europe.",
-    delai: "01:48",
     image: "RA AWB/thumbnails/excelence_relationnelle",
-    alt: "",
+    alt: "image alt",
     thumbnail: "/gifs/excelence_relationnelle-off.gif",
     thumbnail_alt: "",
     thumbnail_gif: "/gifs/excelence_relationnelle-on.gif",
     video: "RA AWB/Preview-02",
     id: "excellence_relationnelle",
-    fichier: "",
   },
   {
-    title: "Innovation & transformation",
+    title: "UN GROUPE\nINNOVANT",
     content:
-      "L’innovation pour se réinventer en continu.\n Hassan El Bedraoui, Directeur Général Délégué, Pôle Transformation, Innovation, Technologies et Opérations.",
-    delai: "03:02",
+      "Hassan El Bedraoui, Directeur Général Délégué, Pôle Transformation,\nInnovation, Technologies et Opérations.",
+    delai: "01:48",
     image: "RA AWB/thumbnails/innovation_transformation",
-    alt: "",
+    alt: "image alt",
     thumbnail: "/gifs/innovation_transformation-off.gif",
     thumbnail_alt: "",
     thumbnail_gif: "/gifs/innovation_transformation-on.gif",
     video: "RA AWB/Preview-03",
     id: "innovation_transformation",
-    fichier: "",
   },
   {
-    title: "Un groupe Panafricain",
+    title: "UN GROUPE\nPANAFRICAIN",
     content:
-      "L’engagement volontariste pour un développement durable en Afrique.\n Ismail Douiri, Directeur Général Délégué, Pôle Banque de Détail à l’International et Filiales de Financement Spécialisées.",
-    delai: "02:35",
+      "Ismail Douiri, Directeur Général Délégué, Pôle Banque de\nDétail à l’International et Filiales de Financement\nSpécialisées.",
+    delai: "03:02",
     image: "RA AWB/thumbnails/group_panafricain",
-    alt: "",
+    alt: "image alt",
     thumbnail: "/gifs/group_panafricain-off.gif",
     thumbnail_alt: "",
     thumbnail_gif: "/gifs/group_panafricain-on.gif",
     video: "RA AWB/Preview-04",
     id: "groupe_panafricain",
-    fichier: "",
   },
   {
-    title: "Rapport financier",
-    content: "",
-    delai: "",
-    image: "RA AWB/thumbnails/rapport_financier",
-    alt: "",
-    thumbnail: "/gifs/rapport_financier-off.gif",
+    title: "UN GROUPE\nCITOYEN",
+    content:
+      "Mohamed Soussi, Directeur Général Adjoint, en charge du\nCapital Humain.",
+    delai: "02:35",
+    image: "RA AWB/thumbnails/strategie_developpements",
+    alt: "image alt",
+    thumbnail: "/gifs/strategie_developpements-off.gif",
     thumbnail_alt: "",
-    thumbnail_gif: "/gifs/rapport_financier-on.gif",
-    video: "RA AWB/Preview-10",
-    id: "rapport_financier",
-    fichier: "",
+    thumbnail_gif: "/gifs/strategie_developpements-on.gif",
+    video: "RA AWB/Preview-01",
+    id: "strategie_developpements",
   },
 ];
 
-export const SLIDERS_DATA_IMAGES = [
+/* export const SLIDERS_DATA_IMAGES = [
   {
     title: "Forum International Afrique Développement",
     countpagination: 3,
@@ -334,4 +317,4 @@ export const SLIDERS_DATA_IMAGES = [
       },
     ],
   },
-];
+]; */

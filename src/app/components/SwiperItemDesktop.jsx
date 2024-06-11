@@ -14,8 +14,6 @@ const SwiperItemDesktop = ({
   thumbnail_alt,
   alt,
   video,
-  isAward,
-  isStrategiesGrandPrix,
   index,
   playVideo,
   videoRefs,
@@ -68,36 +66,40 @@ const SwiperItemDesktop = ({
     <>
       {/* Overlay component */}
       <div
-        className="absolute left-5 top-5 z-10 h-[calc(100%-40px)] w-[calc(100%-40px)] text-white rounded-[32px] overflow-hidden"
+        className="absolute left-5 top-5 z-10 h-[calc(100%-40px)] w-[calc(100%-40px)] text-white overflow-hidden"
         style={overlayStyle}
       >
-        <button
-          className="absolute top-6 left-5 z-[10] bg-transparent border-0 cursor-pointer"
-          onClick={openMenuOverlay}
-        >
-          <Image
-            src={"/menu-burger.svg"}
-            width={24}
-            height={24}
-            alt="ouvrir le menu"
-          />
-        </button>
+        <div className="absolute top-0 left-0 z-[10] w-full flex items-start justify-between px-8 pt-7">
+          <Link href="/">
+            <Image
+              src="/logo.png"
+              width={203}
+              height={65}
+              alt="Agency Africa Logo"
+              className=""
+            />
+          </Link>
+          <button
+            className="bg-transparent border-0 cursor-pointer"
+            onClick={openMenuOverlay}
+          >
+            <Image
+              src={"/menu-burger.svg"}
+              width={24}
+              height={24}
+              alt="ouvrir le menu"
+            />
+          </button>
+        </div>
+
         <Image
-          className="absolute top-0 left-0 w-full h-full object-cover brightness-75"
+          className="absolute top-0 left-0 w-full h-full object-cover brightness-75 grayscale"
           src={`https://res.cloudinary.com/${cloudinaryName}/image/upload/f_webp,q_auto/v1/${image}`}
           alt={alt}
           fill
         />
-        <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
-          <div
-            onClick={() => {
-              // To show the video component ( for better performance )
-              setShowVideo(true);
-              // Play the video
-              playVideo(index);
-            }}
-            className="group cursor-pointer flex flex-col items-center"
-          >
+        <div className="absolute top-0 left-0 w-full h-full flex items-center gap-10 bg-yellow-gradient">
+          <div className="group ml-10">
             <Animate
               animationType="fade"
               direction="down"
@@ -105,25 +107,25 @@ const SwiperItemDesktop = ({
               duration={300}
               triggerOnce={false}
             >
+              {delai && (
+                <p className="font-sofia-condensed text-[25px] font-bold leading-[25px] tracking-[0.5px] mb-2">
+                  {delai}
+                </p>
+              )}
               {title && (
-                <h2 className="text-[100px] font-extrabold leading-none text-center">
+                <h2 className="font-montserrat text-[clamp(50px,calc(-27.56px+7.211vw),80px)] font-bold leading-[0.8] -tracking-[4px] mb-3 uppercase -ml-[6px] whitespace-pre-wrap">
                   {title}
                 </h2>
               )}
               {content && (
-                <p className="text-3xl font-bold leading-[30px] tracking-[0.02em] text-center whitespace-pre-wrap max-w-[1000px] mt-2">
+                <p className="font-sofia-condensed text-[clamp(20px,calc(7.06px+1.201vw),25px)] font-bold leading-[25px] tracking-[0.5px] whitespace-pre-wrap">
                   {content}
-                </p>
-              )}
-              {delai && (
-                <p className="text-3xl font-bold leading-[30px] tracking-[0.02em] text-center whitespace-pre-wrap max-w-[1000px] mt-6">
-                  {delai}
                 </p>
               )}
             </Animate>
           </div>
           <div
-            className="cursor-pointer absolute left-1/2 -translate-x-1/2 bottom-10"
+            className="cursor-pointer absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
             onClick={() => {
               // To show the video component ( for better performance )
               setShowVideo(true);
@@ -136,62 +138,31 @@ const SwiperItemDesktop = ({
               width={84}
               height={84}
               alt="play video"
-              className=""
+              className="xl:w-[124px] xl:h-[124px]"
             />
           </div>
         </div>
-        {isAward && (
-          <Animate
-            animationType="fade"
-            direction="left"
-            className="absolute left-0 top-24 shadow-lg"
-          >
-            <Image
-              src="/awards_clapclaptours.png"
-              alt="awards clapclaptours"
-              width={362}
-              height={125}
-            />
-          </Animate>
-        )}
-        {isStrategiesGrandPrix && (
-          <Animate
-            animationType="fade"
-            direction="left"
-            className="absolute left-0 top-24 shadow-lg"
-          >
-            <Image
-              src="/strategies_grand_prix.png"
-              alt="strategies grand prix"
-              width={250}
-              height={125}
-            />
-          </Animate>
-        )}
 
         {/** file */}
-        <p
-          //href="/"
-          className="absolute bottom-6 right-6 inline-flex items-center gap-2 text-base font-bold leading-[30px] tracking-[0.02em] text-center text-white cursor-pointer"
+        <a
+          href="#"
+          className="absolute bottom-6 right-6 inline-flex items-center gap-1 text-base font-bold leading-[30px] tracking-[0.02em] text-center text-white cursor-pointer"
         >
           <Image
             src="/download-file.svg"
-            width={34}
-            height={43}
+            width={21}
+            height={21}
             className="relative top-1"
           />
-          <span className="text-left text-[15px] leading-[17px]">
-            Télécherger <br />
-            le rapport financier
-          </span>
-        </p>
+          Télécherger le rapport financier
+        </a>
       </div>
 
       {/* Video component */}
       {showVideo && (
         <CloudinaryContext
           cloudName={cloudinaryName}
-          className="h-full overflow-hidden rounded-[32px] relative"
+          className="h-full overflow-hidden relative"
         >
           <Video
             publicId={video}

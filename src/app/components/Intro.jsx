@@ -1,12 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { SliderThumbnail } from "./sliderthumbnail";
-
-const Intro = ({ swiperInstance, data, cloudinaryName, openMenuOverlay }) => {
+const Intro = ({ swiperInstance, openMenuOverlay }) => {
   return (
     <div className="lg:p-5 lg:h-dvh relative min-h-screen">
-      <div className="relative bg-white lg:rounded-[32px] overflow-y-scroll h-dvh lg:h-full p-8 pb-28 md:px-11 md:py-7 flex flex-col justify-between">
+      <div className="relative bg-white overflow-y-scroll h-dvh lg:h-full p-8 pb-28 md:px-11 md:py-7 flex flex-col justify-between">
         <button
           className="absolute top-6 left-5 z-[10] bg-transparent border-0 cursor-pointer"
           onClick={openMenuOverlay}
@@ -20,6 +18,7 @@ const Intro = ({ swiperInstance, data, cloudinaryName, openMenuOverlay }) => {
         </button>
         <Image
           src="/backgrounds/Background01.png"
+          alt="intro"
           fill
           className={`absolute top-0 left-0 w-full h-full object-[right_30%_top_0%] md:object-center object-cover`}
         />
@@ -73,13 +72,6 @@ const Intro = ({ swiperInstance, data, cloudinaryName, openMenuOverlay }) => {
               />
             </button>
           </div>
-        </div>
-        <div className="relative">
-          <SliderThumbnail
-            swiperInstance={swiperInstance}
-            data={data}
-            cloudinaryName={cloudinaryName}
-          />
         </div>
       </div>
     </div>

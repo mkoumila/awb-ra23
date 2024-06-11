@@ -61,12 +61,12 @@ export const SliderThumbnail = ({ data, cloudinaryName, swiperInstance }) => {
           );
         })}
       </Swiper>
-      <ThumbnailPagination />
+      {/* <ThumbnailPagination /> */}
     </div>
   );
 };
 
-export const ThumbnailPagination = () => {
+/* export const ThumbnailPagination = () => {
   return (
     <div className="flex items-center gap-4 justify-center pt-5">
       <span className="w-[18px] h-[18px] rounded-full bg-white border border-white"></span>
@@ -74,7 +74,7 @@ export const ThumbnailPagination = () => {
       <span className="w-[18px] h-[18px] rounded-full border border-white"></span>
     </div>
   );
-};
+}; */
 
 export const Thumbnail = ({
   index,

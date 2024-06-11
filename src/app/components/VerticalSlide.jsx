@@ -17,12 +17,10 @@ import SwiperPagination from "./SwiperPagination";
 import SwiperItemMobile from "./SwiperItemMobile";
 import SwiperItemDesktop from "./SwiperItemDesktop";
 import { useBreakPoint } from "../hooks/useBreakPoint";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Animate } from "./Animate";
 
 export const VerticalSlider = ({ data, slug }) => {
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
   const openMenuOverlay = () => {
@@ -153,8 +151,6 @@ export const VerticalSlider = ({ data, slug }) => {
                     thumbnail={item?.thumbnail}
                     alt={item.alt}
                     video={item.video}
-                    isAward={item.isAward}
-                    isStrategiesGrandPrix={item.isStrategiesGrandPrix}
                     index={index}
                     playVideo={playVideo}
                     videoRefs={videoRefs}
@@ -175,8 +171,6 @@ export const VerticalSlider = ({ data, slug }) => {
                     image={item.image}
                     alt={item.alt}
                     video={item.video}
-                    isAward={item.isAward}
-                    isStrategiesGrandPrix={item.isStrategiesGrandPrix}
                     index={index}
                     playVideo={playVideo}
                     videoRefs={videoRefs}
@@ -216,25 +210,25 @@ export const MenuOverlay = ({ onClose }) => {
       triggerOnce={false}
       className="fixed top-0 left-0 w-full h-full p-5 z-[11]"
     >
-      <div className="bg-black pl-7 pb-5 md:pl-14 w-full h-full lg:rounded-[32px] flex items-center justify-center">
-      <button
-            className="absolute top-10 left-10 z-[10] bg-transparent border-0 cursor-pointer"
-            onClick={onClose}
-          >
-            <Image
-              src={"/close.svg"}
-              width={24}
-              height={24}
-              alt="ouvrir le menu"
-            />
-          </button>
+      <div className="bg-black pl-7 pb-5 md:pl-14 w-full h-full flex items-center justify-center">
+        <button
+          className="absolute top-10 left-10 z-[10] bg-transparent border-0 cursor-pointer"
+          onClick={onClose}
+        >
           <Image
-              src="/logo.png"
-              width={203}
-              height={65}
-              alt="Agency Africa Logo"
-              className="absolute top-[49px] right-[64px]"
-            />
+            src={"/close.svg"}
+            width={24}
+            height={24}
+            alt="ouvrir le menu"
+          />
+        </button>
+        <Image
+          src="/logo.png"
+          width={203}
+          height={65}
+          alt="Agency Africa Logo"
+          className="absolute top-[49px] right-[64px]"
+        />
         <div className="relative w-full h-full">
           <Image
             src="/Super-menu.png"
