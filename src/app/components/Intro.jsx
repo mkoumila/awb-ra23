@@ -33,7 +33,7 @@ const Intro = ({ swiperInstance, openMenuOverlay }) => {
                 src="/logo-fr.png"
                 width={203}
                 height={65}
-                alt="Agency Africa Logo"
+                alt="Attijari Wafabank Logo"
                 className=""
               />
             </Link>

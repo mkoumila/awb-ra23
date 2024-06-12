@@ -230,7 +230,7 @@ export const MenuOverlay = ({ onClose }) => {
           src="/logo-fr.png"
           width={203}
           height={65}
-          alt="Agency Africa Logo"
+          alt="Attijari Wafabank Logo"
           className="absolute top-[49px] right-[64px]"
         />
         <div className="relative w-full h-full">

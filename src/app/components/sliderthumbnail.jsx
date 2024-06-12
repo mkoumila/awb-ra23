@@ -69,7 +69,7 @@ export const Thumbnail = ({
     <div
       className="aspect-[250/158] relative text-white flex items-end justify-center rounded-xl overflow-hidden cursor-pointer group"
       onClick={() => {
-        swiperInstance && swiperInstance.slideTo(index);
+        //swiperInstance && swiperInstance.slideTo(index);
         onClick && onClick();
       }}
     >
