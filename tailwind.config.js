@@ -24,7 +24,7 @@ module.exports = {
       screens: { lgDown: { max: "1023px" } },
       backgroundImage: {
         "yellow-gradient":
-          "linear-gradient(180deg, rgba(100, 91, 89, 0.00) 55%, rgba(234, 174, 60, 0.80) 100%)",
+          "linear-gradient(180deg, rgba(100, 91, 89, 0) 65%, rgba(234, 174, 60, 0.6) 100%)",
       },
     },
   },

@@ -93,7 +93,7 @@ export const VerticalSlider = ({ data, slug }) => {
     ) {
       const newPath = `/${data[swiper?.realIndex - 1]?.id}`;
       const newUrl = window.location.origin + newPath;
-      window.history.pushState(null, "", newUrl);
+      window?.history?.pushState(null, "", newUrl);
     }
   };
 

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Animate } from "./Animate";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import clsx from "clsx";
 
 const SwiperItemDesktop = ({
   cloudinaryName,
@@ -72,24 +73,45 @@ const SwiperItemDesktop = ({
         <div className="absolute top-0 left-0 z-[10] w-full flex items-start justify-between px-8 pt-7">
           <Link href="/">
             <Image
-              src="/logo.png"
+              src="/logo-fr.png"
               width={203}
               height={65}
               alt="Agency Africa Logo"
               className=""
             />
           </Link>
-          <button
-            className="bg-transparent border-0 cursor-pointer"
-            onClick={openMenuOverlay}
-          >
-            <Image
-              src={"/menu-burger.svg"}
-              width={24}
-              height={24}
-              alt="ouvrir le menu"
-            />
-          </button>
+          <div className="flex items-baseline gap-8">
+            <div className="flex items-center gap-4">
+              <a
+                href="#"
+                className={clsx(
+                  "font-sofia-condensed text-4xl leading-[30px] tracking-[0.72px]",
+                  "border-b-2 border-white"
+                )}
+              >
+                FR
+              </a>
+              <a
+                href="#"
+                className={clsx(
+                  "font-sofia-condensed text-4xl leading-[30px] tracking-[0.72px]"
+                )}
+              >
+                EN
+              </a>
+            </div>
+            <button
+              className="bg-transparent border-0 cursor-pointer"
+              onClick={openMenuOverlay}
+            >
+              <Image
+                src={"/menu-burger.svg"}
+                width={27}
+                height={22}
+                alt="ouvrir le menu"
+              />
+            </button>
+          </div>
         </div>
 
         <Image
@@ -98,7 +120,26 @@ const SwiperItemDesktop = ({
           alt={alt}
           fill
         />
-        <div className="absolute top-0 left-0 w-full h-full flex items-center gap-10 bg-yellow-gradient">
+        <div className="absolute top-0 left-0 h-full w-full bg-yellow-gradient z-[1]">
+          <div
+            className="cursor-pointer absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
+            onClick={() => {
+              // To show the video component ( for better performance )
+              setShowVideo(true);
+              // Play the video
+              playVideo(index);
+            }}
+          >
+            <Image
+              src="/play.svg"
+              width={84}
+              height={84}
+              alt="play video"
+              className="xl:w-[124px] xl:h-[124px]"
+            />
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 h-[58%] xl:h-[60%] flex items-start gap-10">
           <div className="group ml-10">
             <Animate
               animationType="fade"
@@ -118,35 +159,18 @@ const SwiperItemDesktop = ({
                 </h2>
               )}
               {content && (
-                <p className="font-sofia-condensed text-[clamp(20px,calc(7.06px+1.201vw),25px)] font-bold leading-[25px] tracking-[0.5px] whitespace-pre-wrap">
+                <p className="font-sofia-condensed text-[clamp(18px,calc(-0.10px+1.768vw),25px)] font-bold leading-[25px] tracking-[0.5px] whitespace-pre-wrap">
                   {content}
                 </p>
               )}
             </Animate>
-          </div>
-          <div
-            className="cursor-pointer absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
-            onClick={() => {
-              // To show the video component ( for better performance )
-              setShowVideo(true);
-              // Play the video
-              playVideo(index);
-            }}
-          >
-            <Image
-              src="/play.svg"
-              width={84}
-              height={84}
-              alt="play video"
-              className="xl:w-[124px] xl:h-[124px]"
-            />
           </div>
         </div>
 
         {/** file */}
         <a
           href="#"
-          className="absolute bottom-6 right-6 inline-flex items-center gap-1 text-base font-bold leading-[30px] tracking-[0.02em] text-center text-white cursor-pointer"
+          className="absolute bottom-6 right-6 inline-flex items-center gap-1 text-base font-bold leading-[30px] tracking-[0.02em] text-center text-white cursor-pointer z-[2]"
         >
           <Image
             src="/download-file.svg"
