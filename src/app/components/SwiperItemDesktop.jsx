@@ -4,6 +4,8 @@ import { Animate } from "./Animate";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
+import { SliderThumbnail } from "./sliderthumbnail";
+import { sliderData } from "../data";
 
 const SwiperItemDesktop = ({
   cloudinaryName,
@@ -11,8 +13,6 @@ const SwiperItemDesktop = ({
   content,
   delai,
   image,
-  thumbnail,
-  thumbnail_alt,
   alt,
   video,
   index,
@@ -20,9 +20,10 @@ const SwiperItemDesktop = ({
   videoRefs,
   isVisible,
   swiperInstance,
-  file,
   openMenuOverlay,
   resetOverlayVisibility,
+  isMultiple,
+  children,
 }) => {
   // Control the visibility of the overlay using the isVisible prop
   const overlayStyle = { display: isVisible[index] ? "block" : "none" };
@@ -170,16 +171,24 @@ const SwiperItemDesktop = ({
         {/** file */}
         <a
           href="#"
-          className="absolute bottom-6 right-6 inline-flex items-center gap-1 text-base font-bold leading-[30px] tracking-[0.02em] text-center text-white cursor-pointer z-[2]"
+          className="absolute bottom-6 right-8 inline-flex items-center gap-1 text-base font-bold leading-[30px] tracking-[0.02em] text-center text-white cursor-pointer z-[2]"
         >
           <Image
             src="/download-file.svg"
             width={21}
             height={21}
             className="relative top-1"
+            alt="Télécherger le rapport financier"
           />
           Télécherger le rapport financier
         </a>
+        {isMultiple ? (
+          <SliderThumbnail
+            slideChildrenData={children}
+            swiperInstance={swiperInstance}
+            cloudinaryName={cloudinaryName}
+          />
+        ) : null}
       </div>
 
       {/* Video component */}
@@ -190,7 +199,7 @@ const SwiperItemDesktop = ({
         >
           <Video
             publicId={video}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-contain"
             innerRef={videoRefs.current[index]} // Link the ref to the video element
             poster=""
             secure="true"

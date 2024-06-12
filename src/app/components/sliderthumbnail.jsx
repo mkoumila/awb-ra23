@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-//import { Pagination } from "swiper/modules";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-export const SliderThumbnail = ({ data, cloudinaryName, swiperInstance }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
+export const SliderThumbnail = ({
+  slideChildrenData,
+  swiperInstance,
+  cloudinaryName,
+}) => {
   return (
-    <div className="pb-10">
+    <div className="absolute left-1/2 bottom-[90px] -translate-x-1/2 w-full z-10 px-10">
       <Swiper
         slidesPerView={1}
-        spaceBetween={16}
+        spaceBetween={20}
         breakpoints={{
           640: {
             slidesPerView: 2,
@@ -25,32 +25,11 @@ export const SliderThumbnail = ({ data, cloudinaryName, swiperInstance }) => {
             slidesPerView: 5,
           },
         }}
-        pagination={{
-          clickable: true,
-          /*
-          renderBullet: function (index, className) {
-            return (
-              '<span class="w-[18px] h-[18px] border-white bg-transparent ' +
-              className +
-              '">' +
-              (index + 1) +
-              "</span>"
-            );
-          },
-          */
-        }}
-        onInit={(swiper) => {
-          setIsLoaded(true);
-        }}
-        //modules={[Pagination]}
-        className={`mySwiper ${
-          isLoaded ? "grid grid-cols-5 gap-5" : "grid grid-cols-5 gap-5"
-        }`}
+        className={slideChildrenData.length < 5 ? "mySwiperThumbnail" : null}
       >
-        {data?.map((item, index) => {
-          if (index === 0) return null;
+        {slideChildrenData?.map((item, index) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={index}>
               <Thumbnail
                 index={index + 1}
                 swiperInstance={swiperInstance}
@@ -77,43 +56,36 @@ export const SliderThumbnail = ({ data, cloudinaryName, swiperInstance }) => {
 }; */
 
 export const Thumbnail = ({
+  cloudinaryName,
   index,
-  thumbnail,
-  thumbnail_gif,
-  alt,
   title,
   delai,
-  cloudinaryName = "",
+  video,
+  color,
   swiperInstance = null,
   onClick = null,
-  bigtitle = false,
 }) => {
   return (
     <div
-      className="group aspect-[250/158] relative text-white flex items-end justify-center rounded-2xl overflow-hidden cursor-pointer"
+      className="aspect-[250/158] relative text-white flex items-end justify-center rounded-xl overflow-hidden cursor-pointer group"
       onClick={() => {
         swiperInstance && swiperInstance.slideTo(index);
         onClick && onClick();
       }}
     >
-      <span className="text-base font-semibold leading-7 absolute top-1 left-4 z-[2]">
-        {delai}
-      </span>
-      <div className="block group-hover:hidden">
-        <Image src={`${thumbnail}`} alt={alt} fill />
+      <div
+        className="absolute w-full h-full top-0 left-0 transition-all opacity-50 group-hover:opacity-100"
+        style={{ backgroundColor: color }}
+      />
+      <div className="absolute w-full h-full top-0 left-0 px-3 py-2">
+        <div className="flex items-center justify-between">
+          <span className="text-xl font-semibold">{delai}</span>
+          <Image src="/play.svg" width={24} height={24} alt="play video" />
+        </div>
+        <h3 className="text-[35px] font-semibold block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          {title}
+        </h3>
       </div>
-      <div className="hidden group-hover:block">
-        <Image src={`${thumbnail_gif}`} alt={alt} fill priority={true} />
-      </div>
-      <h3
-        className={
-          bigtitle
-            ? "text-[53px] leading-[25px] font-semibold fnt-sofia-extra text-center relative max-w-[150px] pb-[27px]"
-            : "text-[25px] leading-[25px] font-semibold fnt-sofia-extra text-center relative max-w-[150px] pb-5"
-        }
-      >
-        {title}
-      </h3>
     </div>
   );
 };

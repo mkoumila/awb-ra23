@@ -30,7 +30,7 @@ const Intro = ({ swiperInstance, openMenuOverlay }) => {
             </h1>
             <Link href="/">
               <Image
-                src="/logo.png"
+                src="/logo-fr.png"
                 width={203}
                 height={65}
                 alt="Agency Africa Logo"

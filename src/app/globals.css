@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;1000&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -20,23 +20,24 @@ body,
   width: 0px;
 }
 
-
 .fnt-sofia-extra {
   font-family: "Sofia Sans Extra Condensed", sans-serif;
   font-optical-sizing: auto;
 }
 
-
 .background-root {
   @apply bg-cover;
-  background-image: url('/masque-intro.png');
+  background-image: url("/masque-intro.png");
 }
-
 
 .background-root-hp {
   @apply bg-cover;
-  background-image: url('/masque-intro.png');
+  background-image: url("/masque-intro.png");
   background-position: top -48px left -20px;
   background-size: 100% 600px;
   background-repeat: no-repeat;
+}
+
+.mySwiperThumbnail .swiper-wrapper {
+  @apply justify-center;
 }

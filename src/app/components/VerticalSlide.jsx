@@ -156,6 +156,8 @@ export const VerticalSlider = ({ data, slug }) => {
                     videoRefs={videoRefs}
                     isVisible={overlayVisibility} // Pass visibility state
                     swiperInstance={swiperInstance}
+                    isMultiple={item.isMultiple}
+                    children={item.children}
                     openMenuOverlay={openMenuOverlay}
                     resetOverlayVisibility={() =>
                       setOverlayVisibility(data.map(() => true))
@@ -176,6 +178,8 @@ export const VerticalSlider = ({ data, slug }) => {
                     videoRefs={videoRefs}
                     isVisible={overlayVisibility} // Pass visibility state
                     swiperInstance={swiperInstance}
+                    isMultiple={item.isMultiple}
+                    children={item.children}
                     resetOverlayVisibility={() =>
                       setOverlayVisibility(data.map(() => true))
                     }
@@ -223,7 +227,7 @@ export const MenuOverlay = ({ onClose }) => {
           />
         </button>
         <Image
-          src="/logo.png"
+          src="/logo-fr.png"
           width={203}
           height={65}
           alt="Agency Africa Logo"
