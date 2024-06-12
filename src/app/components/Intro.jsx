@@ -64,7 +64,7 @@ const Intro = ({ swiperInstance, openMenuOverlay }) => {
               onClick={() => swiperInstance.slideTo(1)}
             >
               <Image
-                src="/play.svg"
+                src="/play-circle.svg"
                 width={84}
                 height={84}
                 alt="play video"

@@ -14,7 +14,7 @@ module.exports = {
     extend: {
       colors: {
         silver: "#EBEBEB",
-        bloody: "#C30000",
+        orange: "#EAAE3C",
       },
       fontFamily: {
         "sofia-condensed": ["Sofia Sans Extra Condensed", "sans-serif"],

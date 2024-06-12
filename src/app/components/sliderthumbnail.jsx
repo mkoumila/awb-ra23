@@ -80,7 +80,7 @@ export const Thumbnail = ({
       <div className="absolute w-full h-full top-0 left-0 px-3 py-2">
         <div className="flex items-center justify-between">
           <span className="text-xl font-semibold">{delai}</span>
-          <Image src="/play.svg" width={24} height={24} alt="play video" />
+          <Image src="/play-circle.svg" width={24} height={24} alt="play video" />
         </div>
         <h3 className="text-[35px] font-semibold block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           {title}

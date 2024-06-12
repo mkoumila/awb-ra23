@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 import { SliderThumbnail } from "./sliderthumbnail";
-import { sliderData } from "../data";
 
 const SwiperItemDesktop = ({
   cloudinaryName,
@@ -132,7 +131,7 @@ const SwiperItemDesktop = ({
             }}
           >
             <Image
-              src="/play.svg"
+              src="/play-circle.svg"
               width={84}
               height={84}
               alt="play video"
@@ -204,7 +203,7 @@ const SwiperItemDesktop = ({
             poster=""
             secure="true"
             preload="metadata"
-            onClick={togglePlayPause}
+            //onClick={togglePlayPause}
           >
             <Transformation fetchFormat="webm" quality="auto" />
           </Video>
@@ -235,6 +234,21 @@ const Controls = ({
       const currentMuteStatus = videoElement.muted;
       videoElement.muted = !currentMuteStatus;
       setIsMuted(!currentMuteStatus); // Update state to reflect change
+    }
+  };
+
+  // Play or pause the video
+  const [isPaused, setIsPaused] = useState(false);
+  const togglePlayPause = () => {
+    const videoElement = videoRefs.current[index].current;
+    if (videoElement) {
+      if (videoElement.paused || videoElement.ended) {
+        videoElement.play();
+        setIsPaused(false);
+      } else {
+        videoElement.pause();
+        setIsPaused(true);
+      }
     }
   };
 
@@ -286,6 +300,50 @@ const Controls = ({
         isVisible ? "opacity-100" : "opacity-0 invisible"
       }`}
     >
+      <div
+        className="h-9 w-9 border border-white rounded-full flex items-center justify-center group transition-all bg-black bg-opacity-10 hover:bg-white cursor-pointer"
+        onClick={() => {
+          resetOverlayVisibility();
+          setIsPaused(false);
+        }}
+      >
+        <Image
+          src="/close.svg"
+          width={14}
+          height={14}
+          alt="Slide Up"
+          className="group-hover:brightness-0"
+        />
+      </div>
+      <div
+        className="h-9 w-9 border border-white rounded-full flex items-center justify-center group transition-all bg-black bg-opacity-10 hover:bg-white cursor-pointer"
+        onClick={() =>
+          !(swiperInstance?.realIndex === swiperInstance?.slides.length - 1)
+            ? swiperInstance.slideNext()
+            : swiperInstance.slideTo(1)
+        }
+      >
+        <Image
+          src="/forward.svg"
+          width={14}
+          height={14}
+          alt="Slide Up"
+          className="group-hover:brightness-0"
+        />
+      </div>
+      <div
+        className="flex h-[67px] w-[67px] cursor-pointer items-center justify-center rounded-full bg-orange"
+        onClick={togglePlayPause}
+      >
+        <Image
+          src={isPaused ? "/play.svg" : "/pause.svg"}
+          width={21}
+          height={24}
+          alt={isPaused ? "play video" : "pause video"}
+          className={isPaused ? "ml-2" : null}
+        />
+      </div>
+
       <div className="h-9 w-9 border border-white rounded-full flex items-center justify-center group transition-all bg-black bg-opacity-10 hover:bg-white cursor-pointer">
         <div className="w-full h-full a2a_kit a2a_kit_size_32 a2a_default_style">
           <div
@@ -301,28 +359,6 @@ const Controls = ({
             />
           </div>
         </div>
-      </div>
-      <div
-        className="flex h-[67px] w-[67px] cursor-pointer items-center justify-center rounded-full bg-bloody text-white font-extrabold leading-[47px] text-xl uppercase"
-        onClick={() =>
-          !(swiperInstance?.realIndex === swiperInstance?.slides.length - 1)
-            ? swiperInstance.slideNext()
-            : swiperInstance.slideTo(1)
-        }
-      >
-        NEXT
-      </div>
-      <div
-        className="h-9 w-9 border border-white rounded-full flex items-center justify-center group transition-all bg-black bg-opacity-10 hover:bg-white cursor-pointer"
-        onClick={() => resetOverlayVisibility()}
-      >
-        <Image
-          src="/close.svg"
-          width={14}
-          height={14}
-          alt="Slide Up"
-          className="group-hover:brightness-0"
-        />
       </div>
       <div
         className="h-9 w-9 border border-white rounded-full flex items-center justify-center group transition-all bg-black bg-opacity-10 hover:bg-white cursor-pointer"
