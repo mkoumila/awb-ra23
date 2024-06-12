@@ -52,10 +52,10 @@ export const sliderData = [
     title: "UN GROUPE\nRELATIONNEL",
     content:
       "Youssef Rouissi,Directeur Général Délégué, Pôle Corporate & Investment Banking.\nHassan Bertal, Directeur Général Délégué, Pôle Banque de Détail Maroc et Europe.",
-    delai: "02:32",
+    delai: "",
     image: "RA AWB/thumbnails/excelence_relationnelle",
     alt: "image alt",
-    video: "RA AWB/Preview-02",
+    video: "",
     id: "excellence_relationnelle",
     isMultiple: true,
     children: [

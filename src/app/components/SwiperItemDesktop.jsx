@@ -41,7 +41,7 @@ const SwiperItemDesktop = ({
   }, [index]);
 
   // Play or pause the video
-  const togglePlayPause = () => {
+  /* const togglePlayPause = () => {
     const videoElement = videoRefs.current[index].current;
     if (videoElement) {
       if (videoElement.paused || videoElement.ended) {
@@ -50,7 +50,7 @@ const SwiperItemDesktop = ({
         videoElement.pause();
       }
     }
-  };
+  }; */
 
   useEffect(() => {
     document.addEventListener("keyup", (e) => {
@@ -121,23 +121,25 @@ const SwiperItemDesktop = ({
           fill
         />
         <div className="absolute top-0 left-0 h-full w-full bg-yellow-gradient z-[1]">
-          <div
-            className="cursor-pointer absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
-            onClick={() => {
-              // To show the video component ( for better performance )
-              setShowVideo(true);
-              // Play the video
-              playVideo(index);
-            }}
-          >
-            <Image
-              src="/play-circle.svg"
-              width={84}
-              height={84}
-              alt="play video"
-              className="xl:w-[124px] xl:h-[124px]"
-            />
-          </div>
+          {video && (
+            <div
+              className="cursor-pointer absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
+              onClick={() => {
+                // To show the video component ( for better performance )
+                setShowVideo(true);
+                // Play the video
+                playVideo(index);
+              }}
+            >
+              <Image
+                src="/play-circle.svg"
+                width={84}
+                height={84}
+                alt="play video"
+                className="xl:w-[124px] xl:h-[124px]"
+              />
+            </div>
+          )}
         </div>
         <div className="absolute bottom-0 left-0 h-[58%] xl:h-[60%] flex items-start gap-10">
           <div className="group ml-10">
@@ -148,11 +150,10 @@ const SwiperItemDesktop = ({
               duration={300}
               triggerOnce={false}
             >
-              {delai && (
-                <p className="font-sofia-condensed text-[25px] font-bold leading-[25px] tracking-[0.5px] mb-2">
-                  {delai}
-                </p>
-              )}
+              <p className="font-sofia-condensed text-[25px] font-bold leading-[25px] tracking-[0.5px] mb-2 whitespace-pre-wrap">
+                {delai ? delai : "\n"}
+              </p>
+
               {title && (
                 <h2 className="font-montserrat text-[clamp(50px,calc(-27.56px+7.211vw),80px)] font-bold leading-[0.8] -tracking-[4px] mb-3 uppercase -ml-[6px] whitespace-pre-wrap">
                   {title}
