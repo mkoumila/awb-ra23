@@ -148,7 +148,7 @@ const SwiperItemMobile = ({
       </div>
       {showVideo && (
         <div
-          className="absolute top-0 left-0 w-full h-full bg-black flex items-center justify-center z-[1]"
+          className="absolute top-0 left-0 w-full h-full bg-black flex items-center justify-center z-[10]"
           style={overlayStyle}
         >
           <CloudinaryContext cloudName={cloudinaryName} className="relative">
