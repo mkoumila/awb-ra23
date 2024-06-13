@@ -62,16 +62,16 @@ const SwiperItemMobile = ({
           fill
         />
         <button
-              className="bg-transparent border-0 absolute top-6 right-5 z-[4]"
-              onClick={openMenuOverlay}
-            >
-              <Image
-                src={"/menu-burger.svg"}
-                width={27}
-                height={22}
-                alt="ouvrir le menu"
-              />
-            </button>
+          className="bg-transparent border-0 absolute top-6 right-5 z-[4]"
+          onClick={openMenuOverlay}
+        >
+          <Image
+            src={"/menu-burger.svg"}
+            width={27}
+            height={22}
+            alt="ouvrir le menu"
+          />
+        </button>
         <div className="absolute top-0 left-0 h-full w-full bg-yellow-gradient z-[1] flex items-center justify-center">
           {video && (
             <>
@@ -166,7 +166,7 @@ const SwiperItemMobile = ({
               <Transformation fetchFormat="auto" quality="auto" />
             </Video>
           </CloudinaryContext>
-          <Controls
+          <ControlsMobile
             swiperInstance={swiperInstance}
             resetOverlayVisibility={resetOverlayVisibility}
             videoRefs={videoRefs}
@@ -178,7 +178,7 @@ const SwiperItemMobile = ({
   );
 };
 
-const Controls = ({
+export const ControlsMobile = ({
   swiperInstance,
   resetOverlayVisibility,
   videoRefs,

@@ -208,7 +208,7 @@ const SwiperItemDesktop = ({
           >
             <Transformation fetchFormat="webm" quality="auto" />
           </Video>
-          <Controls
+          <ControlsDesktop
             swiperInstance={swiperInstance}
             resetOverlayVisibility={resetOverlayVisibility}
             videoRefs={videoRefs}
@@ -220,7 +220,7 @@ const SwiperItemDesktop = ({
   );
 };
 
-const Controls = ({
+export const ControlsDesktop = ({
   swiperInstance,
   resetOverlayVisibility,
   videoRefs,
