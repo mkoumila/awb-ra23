@@ -180,6 +180,7 @@ export const VerticalSlider = ({ data, slug }) => {
                     swiperInstance={swiperInstance}
                     isMultiple={item.isMultiple}
                     children={item.children}
+                    openMenuOverlay={openMenuOverlay}
                     resetOverlayVisibility={() =>
                       setOverlayVisibility(data.map(() => true))
                     }
@@ -212,7 +213,7 @@ export const MenuOverlay = ({ onClose }) => {
       cascade
       duration={500}
       triggerOnce={false}
-      className="fixed top-0 left-0 w-full h-full p-5 z-[11]"
+      className="fixed top-0 left-0 w-full h-full z-[11]"
     >
       <div className="bg-black pl-7 pb-5 md:pl-14 w-full h-full flex items-center justify-center">
         <button

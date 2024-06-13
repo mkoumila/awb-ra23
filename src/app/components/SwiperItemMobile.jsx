@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Animate } from "./Animate";
 import { useEffect, useState } from "react";
 import SwiperPagination from "./SwiperPagination";
+import { SliderThumbnail } from "./sliderthumbnail";
 
 const SwiperItemMobile = ({
   cloudinaryName,
@@ -12,14 +13,16 @@ const SwiperItemMobile = ({
   image,
   alt,
   video,
-
   index,
   playVideo,
   videoRefs,
   isVisible,
   swiperInstance,
+  openMenuOverlay,
   resetOverlayVisibility,
   paginationText,
+  isMultiple,
+  children
 }) => {
   // Control the visibility of the overlay using the isVisible prop
   const overlayStyle = { display: !isVisible[index] ? "flex" : "none" };
@@ -38,7 +41,7 @@ const SwiperItemMobile = ({
   }, [index]);
 
   // Play or pause the video
-  const togglePlayPause = () => {
+  /*  const togglePlayPause = () => {
     const videoElement = videoRefs.current[index].current;
     if (videoElement) {
       if (videoElement.paused || videoElement.ended) {
@@ -47,59 +50,84 @@ const SwiperItemMobile = ({
         videoElement.pause();
       }
     }
-  };
+  }; */
 
   return (
     <div className="flex flex-col h-full bg-white relative">
       <div className="flex-1 relative">
         <Image
-          className="absolute top-0 left-0 w-full h-full object-cover"
+          className="absolute top-0 left-0 w-full h-full object-cover brightness-75 grayscale"
           src={`https://res.cloudinary.com/${cloudinaryName}/image/upload/f_webp,q_auto/v1/${image}`}
           alt={alt}
           fill
         />
+        <button
+              className="bg-transparent border-0 absolute top-6 right-5 z-[4]"
+              onClick={openMenuOverlay}
+            >
+              <Image
+                src={"/menu-burger.svg"}
+                width={27}
+                height={22}
+                alt="ouvrir le menu"
+              />
+            </button>
+        <div className="absolute top-0 left-0 h-full w-full bg-yellow-gradient z-[1] flex items-center justify-center">
+          {video && (
+            <>
+              <div
+                onClick={() => {
+                  // To show the video component ( for better performance )
+                  setShowVideo(true);
+                  // Play the video
+                  playVideo(index);
+                }}
+                className="flex flex-col items-center gap-1"
+              >
+                <Image
+                  src="/play-circle.svg"
+                  width={80}
+                  height={80}
+                  alt="play video"
+                  className="xl:w-[124px] xl:h-[124px]"
+                />
+                <p className="text-white text-[25px] font-bold tracking-[0.5px]">
+                  {delai}
+                </p>
+              </div>
+            </>
+          )}
+        </div>
       </div>
-      <div className="flex-1 flex flex-col items-center justify-center gap-3 relative">
-        <Animate
-          animationType="fade"
-          duration={1000}
-          triggerOnce={false}
-          className="mx-2"
-        >
+      <div className="flex-1 flex flex-col py-4">
+        <Animate animationType="fade" duration={1000} triggerOnce={false}>
           {title && (
-            <h2 className="text-4xl font-extrabold text-center uppercase">
+            <h2 className="uppercase font-montserrat text-[40px] font-light leading-[40px] tracking-[-1.6px] mx-[21px] mb-2">
               {title}
             </h2>
           )}
           {content && (
-            <p className="text-xl font-bold text-center max-w-[250px] mx-auto leading-[normal]">
+            <p className="text-lg font-bold leading-[20px] mx-[21px] mb-8">
               {content}
             </p>
           )}
-          {delai && (
-            <p className="text-xl font-bold text-center max-w-[250px] mx-auto leading-[normal]">
-              {delai}
-            </p>
-          )}
         </Animate>
-        <div
-          className="flex h-[67px] w-[67px] cursor-pointer items-center justify-center rounded-full bg-orange-500 text-white font-extrabold leading-[47px] text-xl absolute right-4 bottom-4 uppercase shadow-lg"
-          onClick={() => {
-            // To show the video component ( for better performance )
-            setShowVideo(true);
-            // Play the video
-            playVideo(index);
-          }}
-        >
-          PLAY
-        </div>
+
+        {isMultiple ? (
+          <SliderThumbnail
+            slideChildrenData={children}
+            swiperInstance={swiperInstance}
+            cloudinaryName={cloudinaryName}
+          />
+        ) : null}
+
         {/* Show Next Slide Arrow only if it's not the last slide */}
         {!(
           swiperInstance?.realIndex ===
           swiperInstance?.slides?.length - 1
         ) && (
           <div
-            className="absolute bottom-4 left-1/2 -translate-x-1/2 brightness-0"
+            className="brightness-0 ml-auto mr-8"
             onClick={() => swiperInstance?.slideNext()}
           >
             <Image
@@ -111,16 +139,16 @@ const SwiperItemMobile = ({
           </div>
         )}
         {/* Pagination */}
-        {paginationText && !isVisible.some((el) => el === false) && (
+        {/* {paginationText && !isVisible.some((el) => el === false) && (
           <SwiperPagination
             swiperInstance={swiperInstance}
             paginationText={paginationText}
           />
-        )}
+        )} */}
       </div>
       {showVideo && (
         <div
-          className="absolute top-0 left-0 w-full h-full bg-black flex items-center justify-center"
+          className="absolute top-0 left-0 w-full h-full bg-black flex items-center justify-center z-[1]"
           style={overlayStyle}
         >
           <CloudinaryContext cloudName={cloudinaryName} className="relative">
@@ -133,7 +161,7 @@ const SwiperItemMobile = ({
               preload="metadata"
               playsInline // This prop ensures inline playback on iOS.
               webkit-playsinline="true" // This ensures inline playback on older webkit browsers.
-              onClick={togglePlayPause}
+              //onClick={togglePlayPause}
             >
               <Transformation fetchFormat="auto" quality="auto" />
             </Video>
@@ -189,24 +217,59 @@ const Controls = ({
     }
   };
 
+  const [isPaused, setIsPaused] = useState(false);
+  const togglePlayPause = () => {
+    const videoElement = videoRefs.current[index].current;
+    if (videoElement) {
+      if (videoElement.paused || videoElement.ended) {
+        videoElement.play();
+        setIsPaused(false);
+      } else {
+        videoElement.pause();
+        setIsPaused(true);
+      }
+    }
+  };
+
   return (
-    <div className="absolute bottom-4 right-4 flex flex-col items-center gap-[10px]">
+    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-5 items-center">
       <div
         className="h-9 w-9 border border-white rounded-full flex items-center justify-center transition-all bg-black bg-opacity-10 cursor-pointer"
-        onClick={() => toggleMute()}
+        onClick={() => {
+          resetOverlayVisibility();
+          setIsPaused(false);
+        }}
+      >
+        <Image src="/close.svg" width={14} height={14} alt="Slide Up" />
+      </div>
+
+      <div
+        className="h-9 w-9 border border-white rounded-full flex items-center justify-center group transition-all bg-black bg-opacity-10 hover:bg-white cursor-pointer"
+        onClick={() =>
+          !(swiperInstance?.realIndex === swiperInstance?.slides.length - 1)
+            ? swiperInstance.slideNext()
+            : swiperInstance.slideTo(1)
+        }
       >
         <Image
-          src={isMuted ? "/sound-off.svg" : "/sound-on.svg"} // Conditional image source based on mute status
-          width={20}
-          height={20}
-          alt={isMuted ? "Sound off" : "Sound on"}
+          src="/forward.svg"
+          width={14}
+          height={14}
+          alt="Slide Up"
+          className="group-hover:brightness-0"
         />
       </div>
       <div
-        className="h-9 w-9 border border-white rounded-full flex items-center justify-center transition-all bg-black bg-opacity-10 cursor-pointer"
-        onClick={() => resetOverlayVisibility()}
+        className="flex h-[67px] w-[67px] cursor-pointer items-center justify-center rounded-full bg-orange"
+        onClick={togglePlayPause}
       >
-        <Image src="/close.svg" width={14} height={14} alt="Slide Up" />
+        <Image
+          src={isPaused ? "/play.svg" : "/pause.svg"}
+          width={21}
+          height={24}
+          alt={isPaused ? "play video" : "pause video"}
+          className={isPaused ? "ml-2" : null}
+        />
       </div>
       <div className="h-9 w-9 border border-white rounded-full flex items-center justify-center transition-all bg-black bg-opacity-10 cursor-pointer">
         <div className="w-full h-full a2a_kit a2a_kit_size_32 a2a_default_style">
@@ -219,14 +282,15 @@ const Controls = ({
         </div>
       </div>
       <div
-        className="flex h-[67px] w-[67px] cursor-pointer items-center justify-center rounded-full bg-orange-500 text-white font-extrabold leading-[47px] text-xl uppercase"
-        onClick={() =>
-          !(swiperInstance?.realIndex === swiperInstance?.slides.length - 1)
-            ? swiperInstance.slideNext()
-            : swiperInstance.slideTo(1)
-        }
+        className="h-9 w-9 border border-white rounded-full flex items-center justify-center transition-all bg-black bg-opacity-10 cursor-pointer"
+        onClick={() => toggleMute()}
       >
-        NEXT
+        <Image
+          src={isMuted ? "/sound-off.svg" : "/sound-on.svg"} // Conditional image source based on mute status
+          width={20}
+          height={20}
+          alt={isMuted ? "Sound off" : "Sound on"}
+        />
       </div>
     </div>
   );

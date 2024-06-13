@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -7,25 +8,29 @@ export const SliderThumbnail = ({
   cloudinaryName,
 }) => {
   return (
-    <div className="absolute left-1/2 bottom-[90px] -translate-x-1/2 w-full z-10 px-10">
+    <div className="lgDown:mb-8 lg:absolute lg:left-1/2 lg:bottom-[90px] lg:-translate-x-1/2 w-full z-10 lg:px-10">
       <Swiper
-        slidesPerView={1}
+        slidesPerView={2}
         spaceBetween={20}
         breakpoints={{
-          640: {
+          320: {
             slidesPerView: 2,
+            centeredSlides: true,
           },
           768: {
-            slidesPerView: 3,
+            slidesPerView: 2,
+            centeredSlides: true,
           },
           1024: {
             slidesPerView: 4,
+            centeredSlides: false,
           },
           1100: {
             slidesPerView: 5,
+            centeredSlides: false,
           },
         }}
-        className={slideChildrenData.length < 5 ? "mySwiperThumbnail" : null}
+        className={clsx(slideChildrenData.length < 5 ? "mySwiperThumbnail" : null, "slide-thumbnail-style")}
       >
         {slideChildrenData?.map((item, index) => {
           return (
@@ -74,15 +79,20 @@ export const Thumbnail = ({
       }}
     >
       <div
-        className="absolute w-full h-full top-0 left-0 transition-all opacity-50 group-hover:opacity-100"
+        className="absolute w-full h-full top-0 left-0 transition-all opacity-50 lg:group-hover:opacity-100 thumbnail-slide"
         style={{ backgroundColor: color }}
       />
       <div className="absolute w-full h-full top-0 left-0 px-3 py-2">
         <div className="flex items-center justify-between">
           <span className="text-xl font-semibold">{delai}</span>
-          <Image src="/play-circle.svg" width={24} height={24} alt="play video" />
+          <Image
+            src="/play-circle.svg"
+            width={24}
+            height={24}
+            alt="play video"
+          />
         </div>
-        <h3 className="text-[35px] font-semibold block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <h3 className="text-[30px] lg:text-[35px] font-semibold block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           {title}
         </h3>
       </div>

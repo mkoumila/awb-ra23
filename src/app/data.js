@@ -24,25 +24,25 @@ export const sliderData = [
       },
       {
         title: "Stratégie",
-        delai: "02:32",
+        delai: "2:32",
         video: "RA AWB/Preview-02",
         color: "#FF9D2A",
       },
       {
         title: "Gouvernance",
-        delai: "01:48",
+        delai: "1:48",
         video: "RA AWB/Preview-03",
         color: "#C0764C",
       },
       {
         title: "Performances",
-        delai: "03:02",
+        delai: "3:02",
         video: "RA AWB/Preview-04",
         color: "#FF5C00",
       },
       {
         title: "Distinctions",
-        delai: "02:35",
+        delai: "2:35",
         video: "RA AWB/Preview-01",
         color: "#FF3D00",
       },
@@ -61,13 +61,13 @@ export const sliderData = [
     children: [
       {
         title: "Performances",
-        delai: "03:02",
+        delai: "3:02",
         video: "RA AWB/Preview-04",
         color: "#FF9922",
       },
       {
         title: "Distinctions",
-        delai: "02:35",
+        delai: "2:35",
         video: "RA AWB/Preview-01",
         color: "#FF3D00",
       },
@@ -77,7 +77,7 @@ export const sliderData = [
     title: "UN GROUPE\nINNOVANT",
     content:
       "Hassan El Bedraoui, Directeur Général Délégué, Pôle Transformation,\nInnovation, Technologies et Opérations.",
-    delai: "01:48",
+    delai: "1:48",
     image: "RA AWB/thumbnails/innovation_transformation",
     alt: "image alt",
     video: "RA AWB/Preview-03",
@@ -89,7 +89,7 @@ export const sliderData = [
     title: "UN GROUPE\nPANAFRICAIN",
     content:
       "Ismail Douiri, Directeur Général Délégué, Pôle Banque de\nDétail à l’International et Filiales de Financement\nSpécialisées.",
-    delai: "03:02",
+    delai: "3:02",
     image: "RA AWB/thumbnails/group_panafricain",
     alt: "image alt",
     video: "RA AWB/Preview-04",
@@ -101,7 +101,7 @@ export const sliderData = [
     title: "UN GROUPE\nCITOYEN",
     content:
       "Mohamed Soussi, Directeur Général Adjoint, en charge du\nCapital Humain.",
-    delai: "02:35",
+    delai: "2:35",
     image: "RA AWB/thumbnails/strategie_developpements",
     alt: "image alt",
     video: "RA AWB/Preview-01",

@@ -18,7 +18,6 @@ module.exports = {
       },
       fontFamily: {
         "sofia-condensed": ["Sofia Sans Extra Condensed", "sans-serif"],
-        sofia: ["Sofia Sans", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
       },
       screens: { lgDown: { max: "1023px" } },
