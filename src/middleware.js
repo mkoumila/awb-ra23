@@ -5,12 +5,12 @@ const AUTH_PASS = "void@awb@rapport";
 
 // Step 1. HTTP Basic Auth Middleware for Challenge
 export function middleware(req) {
-  if (!isAuthenticated(req)) {
+  /* if (!isAuthenticated(req)) {
     return new NextResponse("Authentication required", {
       status: 401,
       headers: { "WWW-Authenticate": "Basic" },
     });
-  }
+  } */
 
   return NextResponse.next();
 }
