@@ -30,7 +30,10 @@ export const SliderThumbnail = ({
             centeredSlides: false,
           },
         }}
-        className={clsx(slideChildrenData.length < 5 ? "mySwiperThumbnail" : null, "slide-thumbnail-style")}
+        className={clsx(
+          slideChildrenData.length < 5 ? "mySwiperThumbnail" : null,
+          "slide-thumbnail-style"
+        )}
       >
         {slideChildrenData?.map((item, index) => {
           return (
@@ -45,20 +48,9 @@ export const SliderThumbnail = ({
           );
         })}
       </Swiper>
-      {/* <ThumbnailPagination /> */}
     </div>
   );
 };
-
-/* export const ThumbnailPagination = () => {
-  return (
-    <div className="flex items-center gap-4 justify-center pt-5">
-      <span className="w-[18px] h-[18px] rounded-full bg-white border border-white"></span>
-      <span className="w-[18px] h-[18px] rounded-full border border-white"></span>
-      <span className="w-[18px] h-[18px] rounded-full border border-white"></span>
-    </div>
-  );
-}; */
 
 export const Thumbnail = ({
   cloudinaryName,
@@ -74,7 +66,6 @@ export const Thumbnail = ({
     <div
       className="aspect-[250/158] relative text-white flex items-end justify-center rounded-xl overflow-hidden cursor-pointer group"
       onClick={() => {
-        //swiperInstance && swiperInstance.slideTo(index);
         onClick && onClick();
       }}
     >
