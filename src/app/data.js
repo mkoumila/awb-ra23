@@ -53,20 +53,20 @@ export const sliderData = [
     content:
       "Youssef Rouissi,Directeur Général Délégué, Pôle Corporate & Investment Banking.\nHassan Bertal, Directeur Général Délégué, Pôle Banque de Détail Maroc et Europe.",
     delai: "",
-    image: "RA AWB/thumbnails/excelence_relationnelle",
+    image: "RA AWB/thumbnails/awb_two_men",
     alt: "image alt",
     video: "",
     id: "excellence_relationnelle",
     isMultiple: true,
     children: [
       {
-        title: "Performances",
+        title: "Viser l’excellence",
         delai: "3:02",
         video: "RA AWB/Preview-04",
         color: "#FF9922",
       },
       {
-        title: "Distinctions",
+        title: "Centricité client",
         delai: "2:35",
         video: "RA AWB/Preview-01",
         color: "#FF3D00",

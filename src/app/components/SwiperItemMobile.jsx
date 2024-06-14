@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Animate } from "./Animate";
 import { useEffect, useState } from "react";
-import { SliderThumbnail } from "./SliderThumbnail";
+import { SliderThumbnail } from "./SliderThumbnailComponent";
 import VideoPlayer from "./VideoPlayer";
 
 const SwiperItemMobile = ({

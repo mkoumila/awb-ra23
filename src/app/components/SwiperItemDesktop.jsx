@@ -3,7 +3,7 @@ import { Animate } from "./Animate";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
-import { SliderThumbnail } from "./SliderThumbnail";
+import { SliderThumbnail } from "./SliderThumbnailComponent";
 import VideoPlayer from "./VideoPlayer";
 
 const SwiperItemDesktop = ({
