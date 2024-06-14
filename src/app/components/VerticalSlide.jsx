@@ -42,23 +42,52 @@ export const VerticalSlider = ({ data, slug }) => {
 
   const [currentIndexSwiper, setCurrentIndexSwiper] = useState(0);
 
-  // Create an array of refs to store references to the video DOM elements
-  const videoRefs = useRef(data.map(() => createRef()));
+  // Function to create refs for each item and its children recursively
+  const createRefs = (items) => {
+    const refs = {};
+    items.forEach((item) => {
+      if (item.id) {
+        refs[item.id] = createRef();
+        if (item.children && Array.isArray(item.children)) {
+          Object.assign(refs, createRefs(item.children));
+        }
+      }
+    });
+    return refs;
+  };
+
+  // Create refs for the data and its children
+  const videoRefs = useRef(createRefs(data));
+
+  const initializeVisibility = (items) => {
+    let visibility = [];
+    items.forEach((item) => {
+      visibility.push({ id: item.id, visibility: true });
+      if (item.children && Array.isArray(item.children)) {
+        visibility = visibility.concat(initializeVisibility(item.children));
+      }
+    });
+    return visibility;
+  };
 
   const [overlayVisibility, setOverlayVisibility] = useState(
-    data.map(() => true)
+    initializeVisibility(data)
   );
 
   // Modify the playVideo function to also hide the overlay
-  const playVideo = (index) => {
+  const playVideo = (id) => {
     // Update the overlay visibility state
     setOverlayVisibility(
-      overlayVisibility.map((visible, idx) => (idx !== index ? visible : false))
+      overlayVisibility.map((item) =>
+        item.id !== id
+          ? { ...item, visibility: true }
+          : { ...item, visibility: false }
+      )
     );
 
     // Wait for the next render to ensure the state is updated
     setTimeout(() => {
-      const videoElement = videoRefs.current[index]?.current;
+      const videoElement = videoRefs.current[id]?.current;
       if (videoElement) {
         videoElement.play().catch((error) => {
           console.error("Error playing video:", error);
@@ -84,7 +113,7 @@ export const VerticalSlider = ({ data, slug }) => {
     }
 
     // Reset the overlay visibility
-    setOverlayVisibility(data.map(() => true));
+    setOverlayVisibility(initializeVisibility(data));
 
     // Update url with the correct slide's id
     if (
@@ -119,7 +148,7 @@ export const VerticalSlider = ({ data, slug }) => {
           onSlideChange={(swiper) => updatePagination(swiper)}
           lazy="true"
           className={`h-dvh transition-all duration-500 ${
-            overlayVisibility.some((el) => el === false)
+            overlayVisibility.some((el) => el.visibility === false)
               ? "bg-black"
               : "bg-silver"
           }`}
@@ -145,6 +174,7 @@ export const VerticalSlider = ({ data, slug }) => {
                     {...item}
                     cloudinaryName={cloudinaryName}
                     title={item.title}
+                    id={item.id}
                     content={item.content}
                     delai={item?.delai}
                     image={item.image}
@@ -160,7 +190,7 @@ export const VerticalSlider = ({ data, slug }) => {
                     children={item.children}
                     openMenuOverlay={openMenuOverlay}
                     resetOverlayVisibility={() =>
-                      setOverlayVisibility(data.map(() => true))
+                      setOverlayVisibility(initializeVisibility(data))
                     }
                   />
                 ) : (
@@ -168,6 +198,7 @@ export const VerticalSlider = ({ data, slug }) => {
                     {...item}
                     cloudinaryName={cloudinaryName}
                     title={item.title}
+                    id={item.id}
                     content={item.content}
                     delai={item?.delai}
                     image={item.image}
@@ -182,7 +213,7 @@ export const VerticalSlider = ({ data, slug }) => {
                     children={item.children}
                     openMenuOverlay={openMenuOverlay}
                     resetOverlayVisibility={() =>
-                      setOverlayVisibility(data.map(() => true))
+                      setOverlayVisibility(initializeVisibility(data))
                     }
                     paginationText={paginationText}
                   />
@@ -193,7 +224,7 @@ export const VerticalSlider = ({ data, slug }) => {
         </Swiper>
         {/* Pagiation */}
         {paginationText &&
-          !overlayVisibility.some((el) => el === false) &&
+          !overlayVisibility.some((el) => el.visibility === false) &&
           device === "desktop" && (
             <SwiperPagination
               swiperInstance={swiperInstance}

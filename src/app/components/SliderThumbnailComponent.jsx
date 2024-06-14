@@ -83,7 +83,7 @@ export const Thumbnail = ({
             alt="play video"
           />
         </div>
-        <h3 className="text-[30px] lg:text-[35px] font-semibold block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max">
+        <h3 className="text-[30px] lg:text-[clamp(28px,calc(10.76px+1.683vw),35px)] font-semibold block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max">
           {title}
         </h3>
       </div>

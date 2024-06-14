@@ -9,6 +9,7 @@ import VideoPlayer from "./VideoPlayer";
 const SwiperItemDesktop = ({
   cloudinaryName,
   title,
+  id,
   content,
   delai,
   image,
@@ -25,20 +26,24 @@ const SwiperItemDesktop = ({
   children,
 }) => {
   // Control the visibility of the overlay using the isVisible prop
-  const overlayStyle = { display: isVisible[index] ? "block" : "none" };
+  const overlayStyle = {
+    display: isVisible.find((el) => el.id === id)?.visibility
+      ? "block"
+      : "none",
+  };
 
   // State to handle showing video component
   const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
-    const videoElement = videoRefs.current[index]?.current;
+    const videoElement = videoRefs.current[id]?.current;
     if (videoElement) {
       videoElement.controls = false; // Attempt to explicitly remove controls
       videoElement.setAttribute("playsinline", ""); // Encourage inline playback on iOS
       videoElement.setAttribute("webkit-playsinline", ""); // For older iOS webviews
       videoElement.removeAttribute("controls"); // Ensure controls attribute is removed
     }
-  }, [index]);
+  }, [id]);
 
   // Play or pause the video
   /* const togglePlayPause = () => {
@@ -55,7 +60,7 @@ const SwiperItemDesktop = ({
   useEffect(() => {
     document.addEventListener("keyup", (e) => {
       if (e.key === "Escape") {
-        const videoElement = videoRefs.current[index].current;
+        const videoElement = videoRefs.current[id].current;
         if (videoElement) {
           resetOverlayVisibility();
         }
@@ -85,8 +90,8 @@ const SwiperItemDesktop = ({
               <a
                 href="#"
                 className={clsx(
-                  "font-sofia-condensed text-4xl leading-[30px] tracking-[0.72px]",
-                  "border-b-2 border-white"
+                  "font-sofia-condensed text-4xl leading-[30px] tracking-[0.72px] transition-all border-b-2 border-transparent hover:border-white",
+                  "!border-white"
                 )}
               >
                 FR
@@ -94,7 +99,7 @@ const SwiperItemDesktop = ({
               <a
                 href="#"
                 className={clsx(
-                  "font-sofia-condensed text-4xl leading-[30px] tracking-[0.72px]"
+                  "font-sofia-condensed text-4xl leading-[30px] tracking-[0.72px] transition-all border-b-2 border-transparent hover:border-white"
                 )}
               >
                 EN
@@ -128,7 +133,7 @@ const SwiperItemDesktop = ({
                 // To show the video component ( for better performance )
                 setShowVideo(true);
                 // Play the video
-                playVideo(index);
+                playVideo(id);
               }}
             >
               <Image
@@ -171,7 +176,7 @@ const SwiperItemDesktop = ({
         {/** file */}
         <a
           href="#"
-          className="absolute bottom-6 right-8 inline-flex items-center gap-1 text-base font-bold leading-[30px] tracking-[0.02em] text-center text-white cursor-pointer z-[2]"
+          className="absolute bottom-6 right-8 inline-flex items-center gap-1 text-base font-bold leading-[30px] tracking-[0.02em] text-center text-white cursor-pointer z-[2] hover:underline"
         >
           <Image
             src="/download-file.svg"
@@ -198,6 +203,7 @@ const SwiperItemDesktop = ({
           video={video}
           videoRefs={videoRefs}
           index={index}
+          id={id}
           swiperInstance={swiperInstance}
           resetOverlayVisibility={resetOverlayVisibility}
         />
@@ -210,13 +216,13 @@ export const ControlsDesktop = ({
   swiperInstance,
   resetOverlayVisibility,
   videoRefs,
-  index,
+  id,
 }) => {
   const [isMuted, setIsMuted] = useState(false); // Initial mute status
 
   // Adjusted toggleMute function to update state
   const toggleMute = () => {
-    const videoElement = videoRefs.current[index].current;
+    const videoElement = videoRefs.current[id].current;
     if (videoElement) {
       const currentMuteStatus = videoElement.muted;
       videoElement.muted = !currentMuteStatus;
@@ -227,7 +233,7 @@ export const ControlsDesktop = ({
   // Play or pause the video
   const [isPaused, setIsPaused] = useState(false);
   const togglePlayPause = () => {
-    const videoElement = videoRefs.current[index].current;
+    const videoElement = videoRefs.current[id].current;
     if (videoElement) {
       if (videoElement.paused || videoElement.ended) {
         videoElement.play();

@@ -13,6 +13,7 @@ const SwiperItemMobile = ({
   alt,
   video,
   index,
+  id,
   playVideo,
   videoRefs,
   isVisible,
@@ -24,13 +25,13 @@ const SwiperItemMobile = ({
   children,
 }) => {
   // Control the visibility of the overlay using the isVisible prop
-  const overlayStyle = { display: !isVisible[index] ? "flex" : "none" };
+  const overlayStyle = { display: isVisible.find(el => el.id === id)?.visibility ? "none" : "flex" };
 
   // State to handle showing video component
   const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
-    const videoElement = videoRefs.current[index]?.current;
+    const videoElement = videoRefs.current[id]?.current;
     if (videoElement) {
       videoElement.controls = false; // Attempt to explicitly remove controls
       videoElement.setAttribute("playsinline", ""); // Encourage inline playback on iOS
@@ -79,7 +80,7 @@ const SwiperItemMobile = ({
                   // To show the video component ( for better performance )
                   setShowVideo(true);
                   // Play the video
-                  playVideo(index);
+                  playVideo(id);
                 }}
                 className="flex flex-col items-center gap-1"
               >
@@ -155,6 +156,7 @@ const SwiperItemMobile = ({
             video={video}
             videoRefs={videoRefs}
             index={index}
+            id={id}
             swiperInstance={swiperInstance}
             resetOverlayVisibility={resetOverlayVisibility}
           />
@@ -168,13 +170,13 @@ export const ControlsMobile = ({
   swiperInstance,
   resetOverlayVisibility,
   videoRefs,
-  index,
+  id
 }) => {
   const [isMuted, setIsMuted] = useState(false); // Initial mute status
 
   // Adjusted toggleMute function to update state
   const toggleMute = () => {
-    const videoElement = videoRefs.current[index].current;
+    const videoElement = videoRefs.current[id].current;
     if (videoElement) {
       const currentMuteStatus = videoElement.muted;
       videoElement.muted = !currentMuteStatus;
@@ -205,7 +207,7 @@ export const ControlsMobile = ({
 
   const [isPaused, setIsPaused] = useState(false);
   const togglePlayPause = () => {
-    const videoElement = videoRefs.current[index].current;
+    const videoElement = videoRefs.current[id].current;
     if (videoElement) {
       if (videoElement.paused || videoElement.ended) {
         videoElement.play();

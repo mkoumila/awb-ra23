@@ -7,7 +7,7 @@ const VideoPlayer = ({
   cloudinaryName,
   video,
   videoRefs,
-  index,
+  id,
   swiperInstance,
   resetOverlayVisibility,
 }) => {
@@ -21,7 +21,7 @@ const VideoPlayer = ({
       <Video
         publicId={video}
         className="relative lg:h-full lg:w-full lg:object-contain"
-        innerRef={videoRefs.current[index]} // Link the ref to the video element
+        innerRef={videoRefs.current[id]} // Link the ref to the video element
         poster=""
         secure="true"
         preload="metadata"
@@ -35,14 +35,14 @@ const VideoPlayer = ({
           swiperInstance={swiperInstance}
           resetOverlayVisibility={resetOverlayVisibility}
           videoRefs={videoRefs}
-          index={index}
+          id={id}
         />
       ) : (
         <ControlsMobile
           swiperInstance={swiperInstance}
           resetOverlayVisibility={resetOverlayVisibility}
           videoRefs={videoRefs}
-          index={index}
+          id={id}
         />
       )}
     </CloudinaryContext>

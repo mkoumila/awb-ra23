@@ -38,7 +38,7 @@ body,
 }
 
 .mySwiperThumbnail .swiper-wrapper {
-  @apply justify-center;
+  @apply lg:justify-center;
 }
 
 .slide-thumbnail-style .swiper-slide-active .thumbnail-slide {
