@@ -1,10 +1,10 @@
-import { CloudinaryContext, Transformation, Video } from "cloudinary-react";
 import Image from "next/image";
 import { Animate } from "./Animate";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
-import { SliderThumbnail } from "./sliderthumbnail";
+import { SliderThumbnail } from "./SliderThumbnail";
+import VideoPlayer from "./VideoPlayer";
 
 const SwiperItemDesktop = ({
   cloudinaryName,
@@ -123,7 +123,7 @@ const SwiperItemDesktop = ({
         <div className="absolute top-0 left-0 h-full w-full bg-yellow-gradient z-[1]">
           {video && (
             <div
-              className="cursor-pointer absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
+              className="cursor-pointer absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 transition-all hover:drop-shadow-[0px_0px_6px_#000000a3] hover:scale-105"
               onClick={() => {
                 // To show the video component ( for better performance )
                 setShowVideo(true);
@@ -193,28 +193,14 @@ const SwiperItemDesktop = ({
 
       {/* Video component */}
       {showVideo && (
-        <CloudinaryContext
-          cloudName={cloudinaryName}
-          className="h-full overflow-hidden relative"
-        >
-          <Video
-            publicId={video}
-            className="h-full w-full object-contain"
-            innerRef={videoRefs.current[index]} // Link the ref to the video element
-            poster=""
-            secure="true"
-            preload="metadata"
-            //onClick={togglePlayPause}
-          >
-            <Transformation fetchFormat="webm" quality="auto" />
-          </Video>
-          <ControlsDesktop
-            swiperInstance={swiperInstance}
-            resetOverlayVisibility={resetOverlayVisibility}
-            videoRefs={videoRefs}
-            index={index}
-          />
-        </CloudinaryContext>
+        <VideoPlayer
+          cloudinaryName={cloudinaryName}
+          video={video}
+          videoRefs={videoRefs}
+          index={index}
+          swiperInstance={swiperInstance}
+          resetOverlayVisibility={resetOverlayVisibility}
+        />
       )}
     </>
   );
@@ -333,7 +319,7 @@ export const ControlsDesktop = ({
         />
       </div>
       <div
-        className="flex h-[67px] w-[67px] cursor-pointer items-center justify-center rounded-full bg-orange"
+        className="flex h-[67px] w-[67px] cursor-pointer items-center justify-center rounded-full bg-orange group hover:bg-white"
         onClick={togglePlayPause}
       >
         <Image
@@ -341,7 +327,7 @@ export const ControlsDesktop = ({
           width={21}
           height={24}
           alt={isPaused ? "play video" : "pause video"}
-          className={isPaused ? "ml-2" : null}
+          className={clsx(isPaused ? "ml-2" : "", "group-hover:brightness-0")}
         />
       </div>
 

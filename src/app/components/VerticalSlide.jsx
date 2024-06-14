@@ -64,7 +64,7 @@ export const VerticalSlider = ({ data, slug }) => {
           console.error("Error playing video:", error);
         });
       }
-    }, 0);
+    }, 100);
   };
   // Function to update pagination and reset overlays on slide change
   const updatePagination = (swiper) => {

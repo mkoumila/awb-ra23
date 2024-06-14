@@ -1,9 +1,8 @@
-import { CloudinaryContext, Transformation, Video } from "cloudinary-react";
 import Image from "next/image";
 import { Animate } from "./Animate";
 import { useEffect, useState } from "react";
-import SwiperPagination from "./SwiperPagination";
-import { SliderThumbnail } from "./sliderthumbnail";
+import { SliderThumbnail } from "./SliderThumbnail";
+import VideoPlayer from "./VideoPlayer";
 
 const SwiperItemMobile = ({
   cloudinaryName,
@@ -22,7 +21,7 @@ const SwiperItemMobile = ({
   resetOverlayVisibility,
   paginationText,
   isMultiple,
-  children
+  children,
 }) => {
   // Control the visibility of the overlay using the isVisible prop
   const overlayStyle = { display: !isVisible[index] ? "flex" : "none" };
@@ -151,26 +150,13 @@ const SwiperItemMobile = ({
           className="absolute top-0 left-0 w-full h-full bg-black flex items-center justify-center z-[10]"
           style={overlayStyle}
         >
-          <CloudinaryContext cloudName={cloudinaryName} className="relative">
-            <Video
-              publicId={video}
-              className=""
-              innerRef={videoRefs.current[index]} // Link the ref to the video element
-              poster=""
-              secure="true"
-              preload="metadata"
-              playsInline // This prop ensures inline playback on iOS.
-              webkit-playsinline="true" // This ensures inline playback on older webkit browsers.
-              //onClick={togglePlayPause}
-            >
-              <Transformation fetchFormat="auto" quality="auto" />
-            </Video>
-          </CloudinaryContext>
-          <ControlsMobile
-            swiperInstance={swiperInstance}
-            resetOverlayVisibility={resetOverlayVisibility}
+          <VideoPlayer
+            cloudinaryName={cloudinaryName}
+            video={video}
             videoRefs={videoRefs}
             index={index}
+            swiperInstance={swiperInstance}
+            resetOverlayVisibility={resetOverlayVisibility}
           />
         </div>
       )}
