@@ -19,9 +19,20 @@ import SwiperItemDesktop from "./SwiperItemDesktop";
 import { useBreakPoint } from "../hooks/useBreakPoint";
 import Image from "next/image";
 import { Animate } from "./Animate";
+import VideoPlayer, { ControlsDesktop, ControlsMobile } from "./VideoPlayer";
 
 export const VerticalSlider = ({ data, slug }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const [chosenVideo, setChosenVideo] = useState({
+    openVideo: false,
+    video: null,
+    id: null,
+  });
+
+  useEffect(() => {
+    console.log(chosenVideo);
+  }, [chosenVideo]);
 
   const openMenuOverlay = () => {
     setIsOpen(true);
@@ -97,6 +108,9 @@ export const VerticalSlider = ({ data, slug }) => {
   };
   // Function to update pagination and reset overlays on slide change
   const updatePagination = (swiper) => {
+    // Reset the chosen video data
+    setChosenVideo({ openVideo: false, video: null, id: null });
+
     const currentIndex = swiper?.realIndex - 1;
     const totalSlides = swiper?.slides?.length - 1 || data.length;
 
@@ -150,7 +164,7 @@ export const VerticalSlider = ({ data, slug }) => {
           className={`h-dvh transition-all duration-500 ${
             overlayVisibility.some((el) => el.visibility === false)
               ? "bg-black"
-              : "bg-silver"
+              : "bg-white"
           }`}
         >
           <SwiperSlide data-hash="intro">
@@ -178,10 +192,8 @@ export const VerticalSlider = ({ data, slug }) => {
                     content={item.content}
                     delai={item?.delai}
                     image={item.image}
-                    thumbnail={item?.thumbnail}
                     alt={item.alt}
                     video={item.video}
-                    index={index}
                     playVideo={playVideo}
                     videoRefs={videoRefs}
                     isVisible={overlayVisibility} // Pass visibility state
@@ -192,6 +204,7 @@ export const VerticalSlider = ({ data, slug }) => {
                     resetOverlayVisibility={() =>
                       setOverlayVisibility(initializeVisibility(data))
                     }
+                    setChosenVideo={setChosenVideo}
                   />
                 ) : (
                   <SwiperItemMobile
@@ -207,20 +220,54 @@ export const VerticalSlider = ({ data, slug }) => {
                     index={index}
                     playVideo={playVideo}
                     videoRefs={videoRefs}
-                    isVisible={overlayVisibility} // Pass visibility state
                     swiperInstance={swiperInstance}
                     isMultiple={item.isMultiple}
                     children={item.children}
                     openMenuOverlay={openMenuOverlay}
-                    resetOverlayVisibility={() =>
-                      setOverlayVisibility(initializeVisibility(data))
-                    }
-                    paginationText={paginationText}
+                    setChosenVideo={setChosenVideo}
                   />
                 )}
               </SwiperSlide>
             );
           })}
+          {chosenVideo?.openVideo ? (
+            <>
+              <div className="lgDown:absolute lgDown:top-0 lgDown:left-0 lgDown:w-full lgDown:h-full lgDown:bg-black lgDown:flex lgDown:items-center lgDown:justify-center lgDown:z-[10]">
+                <VideoPlayer
+                  cloudinaryName={cloudinaryName}
+                  video={chosenVideo?.video}
+                  videoRefs={videoRefs}
+                  id={chosenVideo?.id}
+                  swiperInstance={swiperInstance}
+                  resetOverlayVisibility={() =>
+                    setOverlayVisibility(initializeVisibility(data))
+                  }
+                  setChosenVideo={setChosenVideo}
+                />
+              </div>
+              {device === "desktop" ? (
+                <ControlsDesktop
+                  swiperInstance={swiperInstance}
+                  resetOverlayVisibility={() =>
+                    setOverlayVisibility(initializeVisibility(data))
+                  }
+                  videoRefs={videoRefs}
+                  id={chosenVideo?.id}
+                  setChosenVideo={setChosenVideo}
+                />
+              ) : (
+                <ControlsMobile
+                  swiperInstance={swiperInstance}
+                  resetOverlayVisibility={() =>
+                    setOverlayVisibility(initializeVisibility(data))
+                  }
+                  videoRefs={videoRefs}
+                  id={chosenVideo?.id}
+                  setChosenVideo={setChosenVideo}
+                />
+              )}
+            </>
+          ) : null}
         </Swiper>
         {/* Pagiation */}
         {paginationText &&
