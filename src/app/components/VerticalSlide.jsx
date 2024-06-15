@@ -26,13 +26,10 @@ export const VerticalSlider = ({ data, slug }) => {
 
   const [chosenVideo, setChosenVideo] = useState({
     openVideo: false,
+    isThumbnail: false,
     video: null,
     id: null,
   });
-
-  useEffect(() => {
-    console.log(chosenVideo);
-  }, [chosenVideo]);
 
   const openMenuOverlay = () => {
     setIsOpen(true);
@@ -109,7 +106,12 @@ export const VerticalSlider = ({ data, slug }) => {
   // Function to update pagination and reset overlays on slide change
   const updatePagination = (swiper) => {
     // Reset the chosen video data
-    setChosenVideo({ openVideo: false, video: null, id: null });
+    setChosenVideo({
+      openVideo: false,
+      isThumbnail: false,
+      video: null,
+      id: null,
+    });
 
     const currentIndex = swiper?.realIndex - 1;
     const totalSlides = swiper?.slides?.length - 1 || data.length;
@@ -232,7 +234,7 @@ export const VerticalSlider = ({ data, slug }) => {
           })}
           {chosenVideo?.openVideo ? (
             <>
-              <div className="lgDown:absolute lgDown:top-0 lgDown:left-0 lgDown:w-full lgDown:h-full lgDown:bg-black lgDown:flex lgDown:items-center lgDown:justify-center lgDown:z-[10]">
+              <div className="absolute top-0 left-0 w-full h-full bg-black flex items-center justify-center z-[10]">
                 <VideoPlayer
                   cloudinaryName={cloudinaryName}
                   video={chosenVideo?.video}
@@ -253,6 +255,7 @@ export const VerticalSlider = ({ data, slug }) => {
                   }
                   videoRefs={videoRefs}
                   id={chosenVideo?.id}
+                  chosenVideo={chosenVideo}
                   setChosenVideo={setChosenVideo}
                 />
               ) : (
@@ -263,6 +266,7 @@ export const VerticalSlider = ({ data, slug }) => {
                   }
                   videoRefs={videoRefs}
                   id={chosenVideo?.id}
+                  chosenVideo={chosenVideo}
                   setChosenVideo={setChosenVideo}
                 />
               )}

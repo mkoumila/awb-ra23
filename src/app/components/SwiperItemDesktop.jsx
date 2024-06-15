@@ -16,20 +16,12 @@ const SwiperItemDesktop = ({
   video,
   playVideo,
   videoRefs,
-  isVisible,
   swiperInstance,
   openMenuOverlay,
   isMultiple,
   children,
   setChosenVideo,
 }) => {
-  // Control the visibility of the overlay using the isVisible prop
-  const overlayStyle = {
-    display: isVisible.find((el) => el.id === id)?.visibility
-      ? "block"
-      : "none",
-  };
-
   useEffect(() => {
     const videoElement = videoRefs.current[id]?.current;
     if (videoElement) {
@@ -40,35 +32,12 @@ const SwiperItemDesktop = ({
     }
   }, [id]);
 
-  // Play or pause the video
-  /* const togglePlayPause = () => {
-    const videoElement = videoRefs.current[index].current;
-    if (videoElement) {
-      if (videoElement.paused || videoElement.ended) {
-        videoElement.play();
-      } else {
-        videoElement.pause();
-      }
-    }
-  }; */
-
-  /* useEffect(() => {
-    document.addEventListener("keyup", (e) => {
-      if (e.key === "Escape") {
-        const videoElement = videoRefs.current[id].current;
-        if (videoElement) {
-          resetOverlayVisibility();
-        }
-      }
-    });
-  }, []); */
-
   return (
     <>
       {/* Overlay component */}
       <div
         className="absolute left-5 top-5 z-10 h-[calc(100%-40px)] w-[calc(100%-40px)] text-white overflow-hidden"
-        style={overlayStyle}
+        /* style={overlayStyle} */
       >
         <div className="absolute top-0 left-0 z-[10] w-full flex items-start justify-between px-8 pt-7">
           <Link href="/">
@@ -127,7 +96,12 @@ const SwiperItemDesktop = ({
               onClick={() => {
                 // Play the video
                 playVideo(id);
-                setChosenVideo({ openVideo: true, video: video, id: id });
+                setChosenVideo({
+                  openVideo: true,
+                  isThumbnail: false,
+                  video: video,
+                  id: id,
+                });
               }}
             >
               <Image
@@ -186,6 +160,8 @@ const SwiperItemDesktop = ({
             slideChildrenData={children}
             swiperInstance={swiperInstance}
             cloudinaryName={cloudinaryName}
+            setChosenVideo={setChosenVideo}
+            playVideo={playVideo}
           />
         ) : null}
       </div>

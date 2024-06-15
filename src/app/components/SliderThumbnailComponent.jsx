@@ -6,6 +6,8 @@ export const SliderThumbnail = ({
   slideChildrenData,
   swiperInstance,
   cloudinaryName,
+  setChosenVideo,
+  playVideo,
 }) => {
   return (
     <div className="lgDown:mb-8 lg:absolute lg:left-1/2 lg:bottom-[90px] lg:-translate-x-1/2 w-full z-10 lg:px-10">
@@ -39,9 +41,10 @@ export const SliderThumbnail = ({
           return (
             <SwiperSlide key={index}>
               <Thumbnail
-                index={index + 1}
                 swiperInstance={swiperInstance}
                 cloudinaryName={cloudinaryName}
+                setChosenVideo={setChosenVideo}
+                playVideo={playVideo}
                 {...item}
               />
             </SwiperSlide>
@@ -53,20 +56,20 @@ export const SliderThumbnail = ({
 };
 
 export const Thumbnail = ({
-  cloudinaryName,
-  index,
+  id,
   title,
   delai,
   video,
   color,
-  swiperInstance = null,
-  onClick = null,
+  setChosenVideo,
+  playVideo,
 }) => {
   return (
     <div
       className="aspect-[250/158] relative text-white flex items-end justify-center rounded-xl overflow-hidden cursor-pointer group"
       onClick={() => {
-        onClick && onClick();
+        setChosenVideo({ openVideo: true, isThumbnail: true, video: video, id: id });
+        playVideo(id);
       }}
     >
       <div

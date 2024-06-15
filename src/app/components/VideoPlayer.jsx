@@ -30,8 +30,26 @@ export const ControlsDesktop = ({
   resetOverlayVisibility,
   videoRefs,
   id,
+  chosenVideo,
   setChosenVideo,
 }) => {
+  useEffect(() => {
+    document.addEventListener("keyup", (e) => {
+      if (e.key === "Escape") {
+        const videoElement = videoRefs.current[id].current;
+        if (videoElement) {
+          resetOverlayVisibility();
+          setIsPaused(false);
+          setChosenVideo({
+            openVideo: false,
+            isThumbnail: false,
+            video: null,
+            id: null,
+          });
+        }
+      }
+    });
+  }, []);
   const [isMuted, setIsMuted] = useState(false); // Initial mute status
 
   // Adjusted toggleMute function to update state
@@ -103,7 +121,7 @@ export const ControlsDesktop = ({
 
   return (
     <div
-      className={`fixed bottom-10 left-[calc(50%+28px)] -translate-x-1/2 flex items-center gap-x-5 transition-all duration-500 z-[9] ${
+      className={`absolute bottom-10 left-[calc(50%+28px)] -translate-x-1/2 flex items-center gap-x-5 transition-all duration-500 z-[11] ${
         isVisible ? "opacity-100" : "opacity-0 invisible"
       }`}
     >
@@ -112,7 +130,12 @@ export const ControlsDesktop = ({
         onClick={() => {
           resetOverlayVisibility();
           setIsPaused(false);
-          setChosenVideo({ openVideo: false, video: null, id: null });
+          setChosenVideo({
+            openVideo: false,
+            isThumbnail: false,
+            video: null,
+            id: null,
+          });
         }}
       >
         <Image
@@ -123,23 +146,32 @@ export const ControlsDesktop = ({
           className="group-hover:brightness-0"
         />
       </div>
-      <div
-        className="h-9 w-9 border border-white rounded-full flex items-center justify-center group transition-all bg-black bg-opacity-10 hover:bg-white cursor-pointer"
-        onClick={() => {
-          setChosenVideo({ openVideo: false, video: null, id: null });
-          !(swiperInstance?.realIndex === swiperInstance?.slides.length - 1)
-            ? swiperInstance.slideNext()
-            : swiperInstance.slideTo(1);
-        }}
-      >
-        <Image
-          src="/forward.svg"
-          width={14}
-          height={14}
-          alt="Slide Up"
-          className="group-hover:brightness-0"
-        />
-      </div>
+      {!chosenVideo?.isThumbnail ? (
+        <div
+          className="h-9 w-9 border border-white rounded-full flex items-center justify-center group transition-all bg-black bg-opacity-10 hover:bg-white cursor-pointer"
+          onClick={() => {
+            setChosenVideo({
+              openVideo: false,
+              isThumbnail: false,
+              video: null,
+              id: null,
+            });
+            !(swiperInstance?.realIndex === swiperInstance?.slides.length - 1)
+              ? swiperInstance.slideNext()
+              : swiperInstance.slideTo(1);
+          }}
+        >
+          <Image
+            src="/forward.svg"
+            width={14}
+            height={14}
+            alt="Slide Up"
+            className="group-hover:brightness-0"
+          />
+        </div>
+      ) : (
+        <div className="h-9 w-9 order-first" />
+      )}
       <div
         className="flex h-[67px] w-[67px] cursor-pointer items-center justify-center rounded-full bg-orange group hover:bg-white"
         onClick={togglePlayPause}
@@ -190,8 +222,10 @@ export const ControlsMobile = ({
   resetOverlayVisibility,
   videoRefs,
   id,
-  setChosenVideo
+  chosenVideo,
+  setChosenVideo,
 }) => {
+  console.log(chosenVideo);
   const [isMuted, setIsMuted] = useState(false); // Initial mute status
 
   // Adjusted toggleMute function to update state
@@ -246,28 +280,37 @@ export const ControlsMobile = ({
         onClick={() => {
           resetOverlayVisibility();
           setIsPaused(false);
-          setChosenVideo({ openVideo: false, video: null, id: null });
+          setChosenVideo({
+            openVideo: false,
+            isThumbnail: false,
+            video: null,
+            id: null,
+          });
         }}
       >
         <Image src="/close.svg" width={14} height={14} alt="Slide Up" />
       </div>
 
-      <div
-        className="h-9 w-9 border border-white rounded-full flex items-center justify-center group transition-all bg-black bg-opacity-10 hover:bg-white cursor-pointer"
-        onClick={() =>
-          !(swiperInstance?.realIndex === swiperInstance?.slides.length - 1)
-            ? swiperInstance.slideNext()
-            : swiperInstance.slideTo(1)
-        }
-      >
-        <Image
-          src="/forward.svg"
-          width={14}
-          height={14}
-          alt="Slide Up"
-          className="group-hover:brightness-0"
-        />
-      </div>
+      {!chosenVideo?.isThumbnail ? (
+        <div
+          className="h-9 w-9 border border-white rounded-full flex items-center justify-center group transition-all bg-black bg-opacity-10 hover:bg-white cursor-pointer"
+          onClick={() =>
+            !(swiperInstance?.realIndex === swiperInstance?.slides.length - 1)
+              ? swiperInstance.slideNext()
+              : swiperInstance.slideTo(1)
+          }
+        >
+          <Image
+            src="/forward.svg"
+            width={14}
+            height={14}
+            alt="Slide Up"
+            className="group-hover:brightness-0"
+          />
+        </div>
+      ) : (
+        <div className="h-9 w-9 order-first" />
+      )}
       <div
         className="flex h-[67px] w-[67px] cursor-pointer items-center justify-center rounded-full bg-orange"
         onClick={togglePlayPause}

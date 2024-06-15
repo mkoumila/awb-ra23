@@ -58,7 +58,7 @@ const SwiperItemMobile = ({
                 onClick={() => {
                   // Play the video
                   playVideo(id);
-                  setChosenVideo({ openVideo: true, video: video, id: id });
+                  setChosenVideo({ openVideo: true, isThumbnail: false, video: video, id: id });
                 }}
                 className="flex flex-col items-center gap-1"
               >
@@ -96,6 +96,8 @@ const SwiperItemMobile = ({
             slideChildrenData={children}
             swiperInstance={swiperInstance}
             cloudinaryName={cloudinaryName}
+            setChosenVideo={setChosenVideo}
+            playVideo={playVideo}
           />
         ) : null}
 
