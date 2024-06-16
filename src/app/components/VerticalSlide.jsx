@@ -134,11 +134,20 @@ export const VerticalSlider = ({ data, slug }) => {
     // Update url with the correct slide's id
     if (
       typeof window !== "undefined" &&
-      data[swiper?.realIndex - 1]?.id !== undefined
+      data[swiper?.realIndex]?.id !== undefined
     ) {
-      const newPath = `/${data[swiper?.realIndex - 1]?.id}`;
-      const newUrl = window.location.origin + newPath;
-      window?.history?.pushState(null, "", newUrl);
+      // Handle First slide which is not from data
+      if (swiper?.realIndex === 0) {
+        const newPath = `/`;
+        const newUrl = window.location.origin + newPath;
+        window?.history?.pushState(null, "", newUrl);
+
+        // handle other slides
+      } else if (swiper?.realIndex > 0) {
+        const newPath = `/${data[swiper?.realIndex - 1]?.id}`;
+        const newUrl = window.location.origin + newPath;
+        window?.history?.pushState(null, "", newUrl);
+      }
     }
   };
 

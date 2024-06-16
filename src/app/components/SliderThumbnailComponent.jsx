@@ -68,7 +68,12 @@ export const Thumbnail = ({
     <div
       className="aspect-[250/158] relative text-white flex items-end justify-center rounded-xl overflow-hidden cursor-pointer group"
       onClick={() => {
-        setChosenVideo({ openVideo: true, isThumbnail: true, video: video, id: id });
+        setChosenVideo({
+          openVideo: true,
+          isThumbnail: true,
+          video: video,
+          id: id,
+        });
         playVideo(id);
       }}
     >
@@ -86,7 +91,7 @@ export const Thumbnail = ({
             alt="play video"
           />
         </div>
-        <h3 className="text-[30px] lg:text-[clamp(28px,calc(10.76px+1.683vw),35px)] font-semibold block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max">
+        <h3 className="text-[30px] lg:text-[clamp(28px,calc(10.76px+1.683vw),35px)] leading-[1] font-semibold block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
           {title}
         </h3>
       </div>
