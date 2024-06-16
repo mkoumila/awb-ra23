@@ -3,7 +3,7 @@ export const cloudinaryName = "dbzh1g3j0";
 export const sliderData = [
   {
     title: "Profil\ndu Groupe",
-    linkTitle: "Profile",
+    linkTitle: "Groupe",
     content:
       "Entretien avec Monsieur Mohamed El Kettani, \n Président Directeur Général du Groupe Attijariwafa bank.",
     delai: "1:55",

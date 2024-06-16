@@ -175,7 +175,6 @@ export const VerticalSlider = ({ data, slug }) => {
               data={data}
               cloudinaryName={cloudinaryName}
               openMenuOverlay={openMenuOverlay}
-              currentIndexSwiper={currentIndexSwiper}
             />
           </SwiperSlide>
           {data.map((item, index) => {
