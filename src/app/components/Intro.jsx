@@ -199,7 +199,7 @@ const Intro = ({ swiperInstance, data, cloudinaryName, openMenuOverlay }) => {
           </h1>
         </div>
         <div className="flex-1 flex flex-col">
-          <div className="bg-[#d39d36] h-full flex flex-col pt-8 px-[21px]">
+          <div className="bg-[#d39d36] h-full flex flex-col justify-evenly py-8 px-[21px]">
             {data.map((el, i) => {
               return (
                 <Link
@@ -207,7 +207,7 @@ const Intro = ({ swiperInstance, data, cloudinaryName, openMenuOverlay }) => {
                   key={i}
                   className="flex items-center gap-3"
                 >
-                  <h2 className="font-montserrat text-[40px] font-light tracking-[-1.6px] uppercase text-white">
+                  <h2 className="font-montserrat text-[40px] font-light leading-[1] tracking-[-1.6px] uppercase text-white">
                     {el.linkTitle}
                   </h2>
                   <Image
