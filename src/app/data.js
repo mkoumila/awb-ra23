@@ -1,5 +1,33 @@
 export const cloudinaryName = "dbzh1g3j0";
 
+export const chiffresData = [
+  {
+    title: "Chiffres clés consolidés / IFRS au 31 décembre 2023",
+    image: "RA AWB/chiffres/chiffres-cles-consolides",
+    alt: "Chiffres 1",
+  },
+  {
+    title: "Chiffres clés consolidés / IFRS au 15 janvier 2024",
+    image: "RA AWB/chiffres/chiffres-cles-consolides",
+    alt: "Chiffres 2",
+  },
+  {
+    title: "Chiffres clés consolidés / IFRS au 31 janvier 2024",
+    image: "RA AWB/chiffres/chiffres-cles-consolides",
+    alt: "Chiffres 3",
+  },
+  {
+    title: "Chiffres clés consolidés / IFRS au 21 mars 2024",
+    image: "RA AWB/chiffres/chiffres-cles-consolides",
+    alt: "Chiffres 4",
+  },
+  {
+    title: "Chiffres clés consolidés / IFRS au 05 avril 2024",
+    image: "RA AWB/chiffres/chiffres-cles-consolides",
+    alt: "Chiffres 5",
+  },
+];
+
 export const sliderData = [
   {
     title: "Profil\ndu Groupe",

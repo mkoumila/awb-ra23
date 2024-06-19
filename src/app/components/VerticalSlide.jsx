@@ -11,15 +11,14 @@ import "swiper/css/hash-navigation";
 // import required modules
 import { Pagination, Keyboard } from "swiper/modules";
 import { createRef, useEffect, useRef, useState } from "react";
-import { cloudinaryName } from "../data";
+import { chiffresData, cloudinaryName } from "../data";
 import Intro from "./Intro";
 import SwiperPagination from "./SwiperPagination";
 import SwiperItemMobile from "./SwiperItemMobile";
 import SwiperItemDesktop from "./SwiperItemDesktop";
 import { useBreakPoint } from "../hooks/useBreakPoint";
-import Image from "next/image";
-import { Animate } from "./Animate";
 import VideoPlayer, { ControlsDesktop, ControlsMobile } from "./VideoPlayer";
+import { MenuOverlay } from "./MenuOverlay";
 
 export const VerticalSlider = ({ data, slug }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,8 +46,6 @@ export const VerticalSlider = ({ data, slug }) => {
 
   // Pagination state to handle the pagination visibility
   const [paginationText, setPaginationText] = useState("");
-
-  const [currentIndexSwiper, setCurrentIndexSwiper] = useState(0);
 
   // Function to create refs for each item and its children recursively
   const createRefs = (items) => {
@@ -116,7 +113,6 @@ export const VerticalSlider = ({ data, slug }) => {
     const currentIndex = swiper?.realIndex - 1;
     const totalSlides = swiper?.slides?.length - 1 || data.length;
 
-    setCurrentIndexSwiper(currentIndex);
     // Conditionally setting the pagination text
     if (currentIndex >= 0) {
       setPaginationText(
@@ -159,7 +155,13 @@ export const VerticalSlider = ({ data, slug }) => {
   return (
     <>
       <div className="relative">
-        {isOpen && <MenuOverlay onClose={closeMenuOverlay} />}
+        {isOpen && (
+          <MenuOverlay
+          cloudinaryName={cloudinaryName}
+          chiffresData={chiffresData}
+          onClose={closeMenuOverlay}
+          />
+        )}
 
         <Swiper
           cssMode
@@ -292,47 +294,5 @@ export const VerticalSlider = ({ data, slug }) => {
           )}
       </div>
     </>
-  );
-};
-
-export const MenuOverlay = ({ onClose }) => {
-  return (
-    <Animate
-      animationType="fade"
-      //direction="down"
-      cascade
-      duration={500}
-      triggerOnce={false}
-      className="fixed top-0 left-0 w-full h-full z-[11]"
-    >
-      <div className="bg-black pl-7 pb-5 md:pl-14 w-full h-full flex items-center justify-center">
-        <button
-          className="absolute top-10 left-10 z-[10] bg-transparent border-0 cursor-pointer"
-          onClick={onClose}
-        >
-          <Image
-            src={"/close.svg"}
-            width={24}
-            height={24}
-            alt="ouvrir le menu"
-          />
-        </button>
-        <Image
-          src="/logo-fr.png"
-          width={203}
-          height={65}
-          alt="Attijari Wafabank Logo"
-          className="absolute top-[49px] right-[64px]"
-        />
-        <div className="relative w-full h-full">
-          <Image
-            src="/Super-menu.png"
-            fill
-            alt="menu overlay"
-            className="w-full h-full object-contain"
-          />
-        </div>
-      </div>
-    </Animate>
   );
 };

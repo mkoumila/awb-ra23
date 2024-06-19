@@ -44,3 +44,15 @@ body,
 .slide-thumbnail-style .swiper-slide-active .thumbnail-slide {
   @apply lgDown:opacity-100
 }
+
+.chiffres-pagination .swiper-wrapper  {
+  @apply mb-[60px]
+}
+
+.chiffres-pagination .swiper-pagination-bullet  {
+  @apply w-4 lg:w-[18px] h-4 lg:h-[18px] bg-transparent border-2 border-white opacity-100 !mx-2
+}
+
+.chiffres-pagination .swiper-pagination-bullet-active  {
+  @apply bg-white
+}
