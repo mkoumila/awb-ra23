@@ -143,7 +143,7 @@ export const ControlsDesktop = ({
           width={14}
           height={14}
           alt="Slide Up"
-          className="group-hover:brightness-0"
+          className="invert group-hover:brightness-0 group-hover:invert-0"
         />
       </div>
       {!chosenVideo?.isThumbnail ? (
