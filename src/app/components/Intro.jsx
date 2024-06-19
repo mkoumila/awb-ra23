@@ -80,9 +80,9 @@ const Intro = ({ swiperInstance, data, cloudinaryName, openMenuOverlay }) => {
               width={21}
               height={21}
               className="relative top-1 brightness-0"
-              alt="Télécherger le rapport financier"
+              alt="Télécharger le rapport financier"
             />
-            Télécherger le rapport financier
+            Télécharger le rapport financier
           </a>
         </div>
         <div className="absolute left-[46%] top-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-10 xl:gap-[151px]">
@@ -103,7 +103,7 @@ const Intro = ({ swiperInstance, data, cloudinaryName, openMenuOverlay }) => {
                   key={i}
                   className="flex items-center gap-3 group"
                 >
-                  <h2 className="font-montserrat text-[clamp(40px,calc(-58.4896px+9.615vw),80px)] font-bold leading-[1] tracking-[-4px] uppercase text-white">
+                  <h2 className="font-montserrat text-[clamp(40px,calc(-58.4896px+9.615vw),80px)] font-bold leading-[1] tracking-[-4px] uppercase text-white transition-all border-b-2 border-transparent group-hover:border-white">
                     {el.linkTitle}
                   </h2>
                   <Image

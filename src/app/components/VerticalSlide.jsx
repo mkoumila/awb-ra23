@@ -140,13 +140,13 @@ export const VerticalSlider = ({ data, slug }) => {
       if (swiper?.realIndex === 0) {
         const newPath = `/`;
         const newUrl = window.location.origin + newPath;
-        window?.history?.pushState(null, "", newUrl);
+        window?.history?.pushState({}, "", newUrl);
 
         // handle other slides
       } else if (swiper?.realIndex > 0) {
         const newPath = `/${data[swiper?.realIndex - 1]?.id}`;
         const newUrl = window.location.origin + newPath;
-        window?.history?.pushState(null, "", newUrl);
+        window?.history?.pushState({}, "", newUrl);
       }
     }
   };

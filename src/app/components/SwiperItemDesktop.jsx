@@ -151,9 +151,9 @@ const SwiperItemDesktop = ({
             width={21}
             height={21}
             className="relative top-1"
-            alt="Télécherger le rapport financier"
+            alt="Télécharger le rapport financier"
           />
-          Télécherger le rapport financier
+          Télécharger le rapport financier
         </a>
         {isMultiple ? (
           <SliderThumbnail
